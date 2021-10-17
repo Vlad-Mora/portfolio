@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED='0' next dev",
-    "start": "next start -p $PORT",
+    "build": "next build",
+    "start": "npm run build && next start -p $PORT",
     "type-check": "tsc",
     "prettier-code": "prettier --write \"./!(node_modules|.next)/*/*.{ts,tsx}\""
   },
