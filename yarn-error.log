@@ -1,8 +1,8 @@
 Arguments: 
-  D:\Programs\NodeJS\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js run --silent husky-run pre-commit
+  D:\Programs\NodeJS\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
 
 PATH: 
-  D:\Programs\Git\Git\mingw64\libexec\git-core;D:\Programs\Git\Git\mingw64\bin;D:\Programs\Git\Git\usr\bin;C:\Users\User\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft MPI\Bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\windows\System32\OpenSSH;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;D:\Programs\Git\Git\cmd;D:\Programs\NodeJS;D:\Programs\NVM\nvm;D:\Programs\NodeJS;D:\Programs\XAMPP\php;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\ProgramData\chocolatey\bin;C:\ProgramData\ComposerSetup\bin;C:\Users\User\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\User\AppData\Local\Programs\Python\Python38-32;C:\Users\User\AppData\Local\Microsoft\WindowsApps;D:\Programs\Visual Studio Code\Microsoft VS Code\bin;C:\Users\User\AppData\Local\Programs\Python\Python38-32\python.exe;C:\Users\User\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\User\AppData\Roaming\npm;D:\Programs\NVM\nvm;D:\Programs\NodeJS;D:\Programs\XAMPP\php;D:\Programs\Flutter\flutter\bin;C:\Users\User\AppData\Roaming\Composer\vendor\bin
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Programs\Git\Git\cmd;D:\Programs\NodeJS\;D:\Programs\NVM\nvm;D:\Programs\NodeJS;D:\Programs\XAMPP\php;;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\ProgramData\chocolatey\bin;C:\ProgramData\ComposerSetup\bin;C:\Users\User\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python38-32\;C:\Users\User\AppData\Local\Microsoft\WindowsApps;D:\Programs\Visual Studio Code\Microsoft VS Code\bin;C:\Users\User\AppData\Local\Programs\Python\Python38-32\python.exe;C:\Users\User\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\User\AppData\Roaming\npm;D:\Programs\Flutter\flutter\bin;C:\Users\User\AppData\Roaming\Composer\vendor\bin
 
 Yarn version: 
   1.22.15
@@ -14,12 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: D:\Programs\My_Portofolio\main-page\package.json: Unexpected token } in JSON at position 344
-      at JSON.parse (<anonymous>)
-      at C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
-      at C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+  Error: https://registry.yarnpkg.com/@fortawesome%2ffontawesome-pro-light: Not found
+      at Request.params.callback [as _callback] (C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66140:18)
+      at Request.self.callback (C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140885:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141857:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (C:\Users\User\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141779:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (internal/streams/readable.js:1327:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
   {
@@ -30,7 +35,7 @@ npm manifest:
     "scripts": {
       "dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED='0' next dev",
       "type-check": "tsc",
-      "prettier-code": "prettier --write \"./!(node_modules|.next)/*/*.{ts,tsx}\"",
+      "prettier-code": "prettier --write \"./!(node_modules|.next)/*/*.{ts,tsx}\""
     },
     "dependencies": {
       "@babel/plugin-proposal-class-properties": "^7.13.0",
@@ -39,6 +44,12 @@ npm manifest:
       "@babel/preset-env": "^7.14.1",
       "@babel/preset-react": "^7.13.13",
       "@babel/preset-typescript": "^7.13.0",
+      "@fortawesome/fontawesome": "^1.2.0-2",
+      "@fortawesome/fontawesome-free-brands": "^5.0.6",
+      "@fortawesome/fontawesome-pro-light": "^5.0.6",
+      "@fortawesome/fontawesome-pro-regular": "^5.0.6",
+      "@fortawesome/fontawesome-pro-solid": "^5.0.6",
+      "@fortawesome/react-fontawesome": "0.1.0-1",
       "axios": "^0.21.1",
       "express": "^4.17.1",
       "html-react-parser": "^1.2.4",
@@ -1149,6 +1160,32 @@ Lockfile:
       "@babel/runtime" "^7.10.4"
       react-is "^16.6.3"
   
+  "@fortawesome/fontawesome-common-types@^0.1.7":
+    version "0.1.7"
+    resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.7.tgz#4336c4b06d0b5608ff1215464b66fcf9f4795284"
+    integrity sha512-ego8jRVSHfq/iq4KRZJKQeUAdi3ZjGNrqw4oPN3fNdvTBnLCSntwVCnc37bsAJP9UB8MhrTfPnZYxkv2vpS4pg==
+  
+  "@fortawesome/fontawesome-free-solid@^5.0.10":
+    version "5.0.13"
+    resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-solid/-/fontawesome-free-solid-5.0.13.tgz#24b61aaf471a9d34a5364b052d64a516285ba894"
+    integrity sha512-b+krVnqkdDt52Yfev0x0ZZgtxBQsLw00Zfa3uaVWIDzpNZVtrEXuxldUSUaN/ihgGhSNi8VpvDAdNPVgCKOSxw==
+    dependencies:
+      "@fortawesome/fontawesome-common-types" "^0.1.7"
+  
+  "@fortawesome/fontawesome@^1.1.5":
+    version "1.1.8"
+    resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.8.tgz#75fe66a60f95508160bb16bd781ad7d89b280f5b"
+    integrity sha512-c0/MtkPVT0fmiFcCyYoPjkG9PkMOvfrZw2+0BaJ+Rh6UEcK1AR/LaRgrHHjUkbAbs9LXxQJhFS8CJ4uSnK2+JA==
+    dependencies:
+      "@fortawesome/fontawesome-common-types" "^0.1.7"
+  
+  "@fortawesome/react-fontawesome@0.0.18":
+    version "0.0.18"
+    resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.0.18.tgz#4e0eb1cf9797715a67bb7705ae084fa0a410f185"
+    integrity sha512-ZSO55oWtGSZFvoJW0gvhlYndKvHqmMj/27qTrJOT4DaxQ4Fcc90h/BVEED6IktzBqEunUF8aP+bwU5Og1I0fnQ==
+    dependencies:
+      humps "^2.0.1"
+  
   "@fullhuman/postcss-purgecss@^4.0.2":
     version "4.0.3"
     resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-4.0.3.tgz#55d71712ec1c7a88e0d1ba5f10ce7fb6aa05beb4"
@@ -1574,6 +1611,13 @@ Lockfile:
     version "17.0.9"
     resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
     integrity sha512-wIvGxLfgpVDSAMH5utdL9Ngm5Owu0VsGmldro3ORLXV8CShrL8awVj06NuEXFQ5xyaYfdca7Sgbk/50Ri1GdPg==
+    dependencies:
+      "@types/react" "*"
+  
+  "@types/react-fontawesome@^1.6.2":
+    version "1.6.5"
+    resolved "https://registry.yarnpkg.com/@types/react-fontawesome/-/react-fontawesome-1.6.5.tgz#a5102b086613cf6d6c9ce944e9fb1eee604635b6"
+    integrity sha512-O75ViR81klU7TfVt4TAdEOWzzEf58RM8PVQHUmKsHjhDt/WLMcb+h/k5XxHUv9iYAKI5u81IoMJ20wC+QLe3Dw==
     dependencies:
       "@types/react" "*"
   
@@ -3870,6 +3914,11 @@ Lockfile:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
     integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
+  
+  humps@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/humps/-/humps-2.0.1.tgz#dd02ea6081bd0568dc5d073184463957ba9ef9aa"
+    integrity sha1-3QLqYIG9BWjcXQcxhEY5V7qe+ao=
   
   husky@^4.2.5:
     version "4.3.8"
