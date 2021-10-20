@@ -11,9 +11,7 @@ const PageLayout: React.FC<IPageLayouProperties> = ({ children }) => {
     return (
         <>
             <NavBar/>
-            <div className="content">
-                {children}
-            </div>
+            {children}
             <Footer/>
         </>
     );

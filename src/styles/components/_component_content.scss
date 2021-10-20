@@ -1,0 +1,16 @@
+.app_pagelayout {
+    margin-top: 5rem;
+    padding: .5rem 1rem;
+}
+
+.content {
+    display: grid;
+    height: 100%;
+    margin: 0 auto;
+    width: fit-content;
+    align-content: center;
+    .project {
+        width: fit-content;
+        margin-top: 3rem;
+    }
+}
