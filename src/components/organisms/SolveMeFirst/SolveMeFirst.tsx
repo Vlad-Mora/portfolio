@@ -10,10 +10,6 @@ const SolveMeFirst: React.FC<ISolveMeFirstProperties> = ({  }) => {
     const [firstNumber, setFirstNumber] = React.useState<number>(0);
     const [secondNumber, setSecondNumber] = React.useState<number>(0);
 
-    React.useEffect(() => {
-        console.log(firstNumber, secondNumber);
-    }, [firstNumber, secondNumber])
-
     return (
         <>
             <h1>SolveMeFirst</h1>
