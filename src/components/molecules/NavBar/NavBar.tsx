@@ -14,6 +14,10 @@ const NavBar: React.FC = () => {
                     link="/"
                 />
                 <NavItem
+                    title="Projects"
+                    link="/projects"
+                />
+                <NavItem
                     title="contact"
                     link="/contact"
                 />
