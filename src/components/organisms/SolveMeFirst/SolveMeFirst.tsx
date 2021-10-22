@@ -1,47 +1,67 @@
 import React from 'react';
-import { Input, Button } from "semantic-ui-react";
+import Button from 'src/components/atoms/Button/Button';
+import InputField from 'src/components/atoms/InputField';
+import ProjectLayout from 'src/components/templates/ProjectLayout/ProjectLayout';
 
 interface ISolveMeFirstProperties {}
 
 const SolveMeFirst: React.FC<ISolveMeFirstProperties> = ({  }) => {
 
-    const [total, setTotal] = React.useState<number | string>();
+    const [output, setOutput] = React.useState<number | string>();
 
-    const [firstNumber, setFirstNumber] = React.useState<number>(0);
-    const [secondNumber, setSecondNumber] = React.useState<number>(0);
+    const [firstNumber, setFirstNumber] = React.useState<number>();
+    const [secondNumber, setSecondNumber] = React.useState<number>();
+
+    const [isDisabled, setIsDisabled] = React.useState<boolean>(true);
+
+    React.useEffect(() => {
+        if (firstNumber !== undefined && firstNumber > 0) {
+            if (secondNumber !== undefined && secondNumber > 0) {
+                setIsDisabled(false);
+            } else {
+                setIsDisabled(true);
+            }
+        }
+    }, [firstNumber, secondNumber])
 
     return (
-        <>
-            <h1>SolveMeFirst</h1>
-            <p>Input two numbers, A and B, then press "Calculate" to add them together.</p>
-            <div className="output">
-                Output: {total}
-            </div>
-            <div className="inputs">
-                <Input
-                    className="custom-input-field"
-                    placeholder="Value for A"
-                    onChange={(_, data) => {
-                        setFirstNumber(parseInt(data.value));
-                    }}
-                />
-                <Input
-                    className="custom-input-field"
-                    placeholder="Value for B"
-                    onChange={(_, data) => {
-                        setSecondNumber(parseInt(data.value));
-                    }}
-                />
-            </div>
-            <Button
-                className="custom-button"
-                onClick={() => {
-                    setTotal(firstNumber + secondNumber)
-                }}
-            >
-                Add
-            </Button>
-        </>
+        <ProjectLayout
+            title="SolveMeFirst"
+            description="
+                Input two numbers, A and B, then add them together.
+
+                Example:
+                Input: A: 2  B: 3
+                Output: 5
+            "
+            input={
+                <>
+                    <InputField
+                        placeHolder="Value for A"
+                        setInput={setFirstNumber}
+                        isInputNumber={true}
+                    />
+                    <InputField
+                        placeHolder="Value for B"
+                        setInput={setSecondNumber}
+                        isInputNumber={true}
+                    />
+                </>
+            }
+            output={output}
+            button={
+                <>
+                    <Button
+                        text="Add"
+                        onClick={() => {
+                            (firstNumber !== undefined && secondNumber !== undefined) &&
+                            setOutput(firstNumber + secondNumber)
+                        }}
+                        disabled={isDisabled}
+                    />
+                </>
+            }
+        />
     );
 };
 
