@@ -1,4 +1,5 @@
 import React from "react";
+import FooterItem from "src/components/atoms/FooterItem/FooterItem";
 import NavItem from "src/components/atoms/NavItem/NavItem";
 
 const NavBar: React.FC = () => {
@@ -20,6 +21,18 @@ const NavBar: React.FC = () => {
                 <NavItem
                     title="contact"
                     link="/contact"
+                />
+            </div>
+            <div className="social-media">
+                <FooterItem
+                    title="Facebook"
+                    icon="fab fa-facebook-square"
+                    link="https://facebook.com/"
+                />
+                <FooterItem
+                    title="Instagram"
+                    icon="fab fa-instagram"
+                    link="https://www.instagram.com"
                 />
             </div>
         </div>

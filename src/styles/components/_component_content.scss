@@ -1,11 +1,15 @@
+body {
+    overflow: hidden;
+}
+
 .app_pagelayout {
-    margin-top: 5rem;
     padding: .5rem 1rem;
+    overflow-y: scroll;
+    height: calc(100vh - 5rem - 2rem);
 }
 
 .content {
     display: grid;
-    height: 100%;
     margin: 0 auto;
     width: fit-content;
     align-content: center;

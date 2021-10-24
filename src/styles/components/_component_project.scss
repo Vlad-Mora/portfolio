@@ -1,0 +1,16 @@
+.project-wrapper {
+    .project-content {
+        display: grid;
+        row-gap: .5rem;
+        .project-input {
+            display: grid;
+            grid-template-columns: repeat(var(--testVar), 1fr);
+            .custom-input-field {
+                padding: .3rem .8rem;
+            }
+        }
+        .project-output {
+            font-size: 1.3rem;
+        }
+    }
+}

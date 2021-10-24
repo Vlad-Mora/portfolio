@@ -25,13 +25,13 @@ const SimpleArraySum: React.FC<ISimpleArraySumProperties> = ({  }) => {
                 Input an list of numbers, then return the sum of them.
             "
             input={
-                <>
+                [
                     <InputField
                         placeHolder="E.g 1, 2, 3, 4"
                         setInput={setArray}
                         isInputNumber={false}
                     />
-                </>
+                ]
             }
             output={output}
             button={

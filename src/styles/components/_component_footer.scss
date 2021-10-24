@@ -1,8 +1,9 @@
 .footer {
     position: fixed;
     bottom: 0;
-    height: 7rem;
+    height: fit-content;
     width: 100%;
+    padding: 1rem;
     background-color: $purple_dark_color;
     .footer-items {    
         display: flex;

@@ -35,18 +35,18 @@ const SolveMeFirst: React.FC<ISolveMeFirstProperties> = ({  }) => {
                 Output: 5
             "
             input={
-                <>
+                [
                     <InputField
                         placeHolder="Value for A"
                         setInput={setFirstNumber}
                         isInputNumber={true}
-                    />
+                    />,
                     <InputField
                         placeHolder="Value for B"
                         setInput={setSecondNumber}
                         isInputNumber={true}
                     />
-                </>
+                ]
             }
             output={output}
             button={

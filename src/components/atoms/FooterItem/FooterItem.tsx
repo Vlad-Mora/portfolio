@@ -1,4 +1,5 @@
 import React from "react";
+import { Tooltip } from "react-tippy";
 
 interface INavItemProperties {
   title: string;
@@ -16,11 +17,12 @@ const NavItem: React.FC<INavItemProperties> = ({ title, icon, link }) => {
             }}
         >
             <div className="link-wrapper">
-                <i className={`link-icon ${icon}`}/>
+                <Tooltip
+                    title={title}
+                >
+                    <i className={`link-icon ${icon}`}/>
+                </Tooltip>
             </div>
-            <h2 className="link-title">
-                {title}
-            </h2>
         </div>
     );
 };

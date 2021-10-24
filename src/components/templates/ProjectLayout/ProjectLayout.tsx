@@ -1,9 +1,9 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 interface IPageLayouProperties {
     title: string;
     description: string;
-    input: React.ReactElement;
+    input: React.ReactElement[];
     output: any;
     button: React.ReactElement;
 }
@@ -15,13 +15,13 @@ const PageLayout: React.FC<IPageLayouProperties> = ({ title, description, input,
             <h1 className="project-title">{title}</h1>
             <div className="project-description">{description}</div>
             <div className="project-content">
-                <div className="project-input">
+                <div className="project-input" style={{ "--testVar": input.length } as CSSProperties}>
                     {input}
                 </div>
+                {button}
                 <div className="project-output">
                     Output: {output}
                 </div>
-                {button}
             </div>
         </div>
     );
