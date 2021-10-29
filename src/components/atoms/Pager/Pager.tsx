@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pagination } from 'semantic-ui-react';
 
-import { ContextContainer, ContextProps } from 'src/context/ContextContainer';
+import { ContextContainer, ContextProps } from '@context/ContextContainer';
 
 interface IPagerProperties {
     totalPages: number;

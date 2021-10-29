@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "../../molecules/NavBar/NavBar";
-import Footer from "../../molecules/Footer/Footer";
+import NavBar from "@molecules/NavBar/NavBar";
+import Footer from "@molecules/Footer/Footer";
 
 interface IPageLayouProperties {
     children: React.ReactElement;

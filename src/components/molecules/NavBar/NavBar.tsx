@@ -1,6 +1,6 @@
 import React from "react";
-import FooterItem from "src/components/atoms/FooterItem/FooterItem";
-import NavItem from "src/components/atoms/NavItem/NavItem";
+import FooterItem from "@atoms/FooterItem/FooterItem";
+import NavItem from "@atoms/NavItem/NavItem";
 
 const NavBar: React.FC = () => {
 

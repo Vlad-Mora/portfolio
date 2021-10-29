@@ -1,18 +1,18 @@
 import React from 'react';
-import Button from 'src/components/atoms/Button/Button';
-import InputField from 'src/components/atoms/InputField';
-import ProjectLayout from 'src/components/templates/ProjectLayout/ProjectLayout';
+import Button from '@atoms/Button/Button';
+import InputField from '@atoms/InputField';
+import ProjectLayout from '@templates/ProjectLayout/ProjectLayout';
+import { inputToArray } from '@helpers/inputToArray';
 
-interface ISimpleArraySumProperties {}
 
-const SimpleArraySum: React.FC<ISimpleArraySumProperties> = ({  }) => {
+const SimpleArraySum: React.FC = () => {
 
     const [output, setOutput] = React.useState<number>();
-    const [array, setArray] = React.useState<string>();
+    const [array, setArray] = React.useState<string>("");
 
     function handleClick() {
         let total = 0;
-        array?.replace(" ", "").split(",").forEach(number => {
+        inputToArray(array, true).forEach(number => {
             total += parseInt(number);
         });
         setOutput(total);
@@ -21,9 +21,7 @@ const SimpleArraySum: React.FC<ISimpleArraySumProperties> = ({  }) => {
     return (
         <ProjectLayout
             title="SimpleArraySum"
-            description="
-                Input an list of numbers, then return the sum of them.
-            "
+            descriptionLink="simple-array-sum"
             input={
                 [
                     <InputField

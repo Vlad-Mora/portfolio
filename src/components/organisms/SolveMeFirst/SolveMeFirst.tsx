@@ -1,11 +1,9 @@
 import React from 'react';
-import Button from 'src/components/atoms/Button/Button';
-import InputField from 'src/components/atoms/InputField';
-import ProjectLayout from 'src/components/templates/ProjectLayout/ProjectLayout';
+import Button from '@atoms/Button/Button';
+import InputField from '@atoms/InputField';
+import ProjectLayout from '@templates/ProjectLayout/ProjectLayout';
 
-interface ISolveMeFirstProperties {}
-
-const SolveMeFirst: React.FC<ISolveMeFirstProperties> = ({  }) => {
+const SolveMeFirst: React.FC = () => {
 
     const [output, setOutput] = React.useState<number | string>();
 
@@ -27,13 +25,7 @@ const SolveMeFirst: React.FC<ISolveMeFirstProperties> = ({  }) => {
     return (
         <ProjectLayout
             title="SolveMeFirst"
-            description="
-                Input two numbers, A and B, then add them together.
-
-                Example:
-                Input: A: 2  B: 3
-                Output: 5
-            "
+            descriptionLink="solve-me-first"
             input={
                 [
                     <InputField

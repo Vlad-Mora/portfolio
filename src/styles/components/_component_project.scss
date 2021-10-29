@@ -1,10 +1,36 @@
 .project-wrapper {
+    .project-title {
+        text-decoration: none;
+        color: $black;
+        font-weight: bolder;
+        font-size: 2rem;
+        position: relative;
+        &:hover {
+            color: $purple_bright_color;
+            &::before {
+                visibility: visible;
+                width: 100%;
+            }
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: .1rem;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            visibility: hidden;
+            transition: all 0.4s ease-in-out;
+        }
+    }
     .project-content {
         display: grid;
         row-gap: .5rem;
+        margin: 1rem 0;
         .project-input {
             display: grid;
-            grid-template-columns: repeat(var(--testVar), 1fr);
+            grid-template-columns: repeat(var(--inputCount), 1fr);
             .custom-input-field {
                 padding: .3rem .8rem;
             }
