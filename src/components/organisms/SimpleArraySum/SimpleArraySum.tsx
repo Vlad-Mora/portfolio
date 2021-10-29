@@ -2,18 +2,17 @@ import React from 'react';
 import Button from '@atoms/Button/Button';
 import InputField from '@atoms/InputField';
 import ProjectLayout from '@templates/ProjectLayout/ProjectLayout';
-import { inputToArray } from '@helpers/inputToArray';
 
 
 const SimpleArraySum: React.FC = () => {
 
     const [output, setOutput] = React.useState<number>();
-    const [array, setArray] = React.useState<string>("");
+    const [array, setArray] = React.useState<number[]>([]);
 
     function handleClick() {
         let total = 0;
-        inputToArray(array, true).forEach(number => {
-            total += parseInt(number);
+        array.forEach(number => {
+            total += number;
         });
         setOutput(total);
     };
@@ -27,7 +26,8 @@ const SimpleArraySum: React.FC = () => {
                     <InputField
                         placeHolder="E.g 1, 2, 3, 4"
                         setInput={setArray}
-                        isInputNumber={false}
+                        isInputNumber={true}
+                        isInputArray={true}
                     />
                 ]
             }

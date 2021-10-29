@@ -2,12 +2,11 @@ import React from 'react';
 import Button from '@atoms/Button/Button';
 import InputField from '@atoms/InputField';
 import ProjectLayout from '@templates/ProjectLayout/ProjectLayout';
-import { inputToArray } from '@helpers/inputToArray';
 
 const SubarrayDivision: React.FC = () => {
 
     const [output, setOutput] = React.useState<number>();
-    const [s, setS] = React.useState<any>("");
+    const [s, setS] = React.useState<number[]>([]);
     const [d, setD] = React.useState<number>(0);
     const [m, setM] = React.useState<number>(0);
 
@@ -42,17 +41,20 @@ const SubarrayDivision: React.FC = () => {
                     <InputField
                         placeHolder="Value for S"
                         setInput={setS}
-                        isInputNumber={false}
+                        isInputNumber={true}
+                        isInputArray={true}
                     />,
                     <InputField
                         placeHolder="Value for D"
                         setInput={setD}
                         isInputNumber={true}
+                        isInputArray={false}
                     />,
                     <InputField
                         placeHolder="Value for M"
                         setInput={setM}
                         isInputNumber={true}
+                        isInputArray={false}
                     />
                 ]
             }
@@ -62,7 +64,6 @@ const SubarrayDivision: React.FC = () => {
                     <Button
                         text="Test"
                         onClick={() => {
-                            setS(inputToArray(s, true));
                             birthday(s, d, m);
                         }}
                     />

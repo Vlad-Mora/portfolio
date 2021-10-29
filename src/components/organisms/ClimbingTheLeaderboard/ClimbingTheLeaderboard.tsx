@@ -2,22 +2,21 @@ import React from 'react';
 import Button from '@atoms/Button/Button';
 import InputField from '@atoms/InputField';
 import ProjectLayout from '@templates/ProjectLayout/ProjectLayout';
-import { inputToArray } from '@helpers/inputToArray';
 
 
 const ClimbingTheLeaderboard: React.FC = () => {
 
     const [output, setOutput] = React.useState<string>("");
-    const [leaderboardScores, setLeaderboardScores] = React.useState<string>("");
-    const [playerScores, setPlayerScores] = React.useState<string>("");
+    const [leaderboardScores, setLeaderboardScores] = React.useState<number[]>([]);
+    const [playerScores, setPlayerScores] = React.useState<number[]>([]);
 
     function handleClick() {
-        let leaderboardScoresInt = inputToArray(leaderboardScores, true);
-        let playerScoresInt = inputToArray(playerScores, true);
         let playerRanks: number[] = [];
+        console.log(leaderboardScores)
+        console.log(playerScores)
 
-        playerScoresInt.forEach((score) => {
-            let leaderboard = [...new Set([...leaderboardScoresInt, score])].sort((first, second) => first > second ? -1 : 1);
+        playerScores.forEach((score) => {
+            let leaderboard = [...new Set([...leaderboardScores, score])].sort((first, second) => first > second ? -1 : 1);
             
             const leaderboardPosition = leaderboard.indexOf(score) + 1;
             playerRanks.push(leaderboardPosition);
@@ -35,12 +34,14 @@ const ClimbingTheLeaderboard: React.FC = () => {
                     <InputField
                         placeHolder="Leaderboard scores..."
                         setInput={setLeaderboardScores}
-                        isInputNumber={false}
+                        isInputNumber={true}
+                        isInputArray={true}
                     />,
                     <InputField
                         placeHolder="Player scores..."
                         setInput={setPlayerScores}
-                        isInputNumber={false}
+                        isInputNumber={true}
+                        isInputArray={true}
                     />
                 ]
             }
@@ -50,7 +51,7 @@ const ClimbingTheLeaderboard: React.FC = () => {
                     <Button
                         text="Calculate"
                         onClick={() => {
-                            (leaderboardScores !== "" && playerScores !== "") &&
+                            (leaderboardScores.length > 0 && playerScores.length > 0) &&
                             handleClick();
                         }}
                     />

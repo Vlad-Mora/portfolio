@@ -32,11 +32,13 @@ const SolveMeFirst: React.FC = () => {
                         placeHolder="Value for A"
                         setInput={setFirstNumber}
                         isInputNumber={true}
+                        isInputArray={false}
                     />,
                     <InputField
                         placeHolder="Value for B"
                         setInput={setSecondNumber}
                         isInputNumber={true}
+                        isInputArray={false}
                     />
                 ]
             }
