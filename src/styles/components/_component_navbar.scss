@@ -1,16 +1,41 @@
+.mobile-navbar {
+    display: none;
+}
+
 .navbar {
     z-index: 2;
     top: 0;
     width: 100%;
     height: 5rem;
     background-color: $grey_color;
-    display: grid;
-    grid-template-columns: 12.5rem 1fr 12.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     padding: .2rem 1rem;
+    color: $white;
 
     .navbar-icon {
+        display: grid;
+        grid-template-columns: 4.5rem 1fr;
+        align-items: center;
+        font-family: IndieFlower, cursive;
+        font-weight: bold;
+        font-size: 1.5rem;
+        width: 15rem;
+        user-select: none;
+        
+        .header-name {
+            position: relative;
+            top: -15%;
+            .split-text {
+                position: relative;
+                top: 1.4rem;
+                left: -30%;
+            }
+        }
         img {
-            width: 12.5rem;
+            width: 4.5rem;
         }
     }
 
@@ -19,7 +44,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        padding-right: 12.5rem;
+        width: 100%;
         .navbar-item {
             margin-right: 1rem;
             button {
@@ -45,14 +70,135 @@
 
     .social-media {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(var(--social-count), 1fr);
         justify-content: center;
         align-items: center;
         .footer-item {
-            margin: 0 auto;
+            margin: .5rem;
             svg {
                 width: 2rem;
                 height: 2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+    .mobile-navbar {
+        z-index: 2;
+        top: 0;
+        width: 100%;
+        height: 5rem;
+        background-color: $grey_color;
+        display: flex;
+        align-items: left;
+        justify-content: center;
+        padding: .2rem 1rem;
+        color: $white;
+        .navbar-icon {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            font-family: IndieFlower, cursive;
+            font-weight: bold;
+            font-size: 1.5rem;
+            width: 15rem;
+            user-select: none;
+            img {
+                margin-left: auto;
+            }
+            .header-name {
+                position: relative;
+                top: -15%;
+                .split-text {
+                    position: relative;
+                    top: 1.4rem;
+                    left: -30%;
+                }
+            }
+            img {
+                width: 4.5rem;
+            }
+        }
+    }
+    .page-opacity {
+        transition: opacity 1s !important;
+        opacity: 1;
+        &.open {
+            z-index: 2;
+            background-color: $primary_bg_color;
+            opacity: .5;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+    .navbar-slide {
+        height: 100vh;
+        width: 10rem;
+        z-index: 3;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: $secondary_bg_color;
+        transition: transform .5s;
+        transform: translateX(10rem);
+        .slide-button {
+            position: relative !important;
+            left: -12%;
+            top: 10%;
+            padding: .5rem .2rem !important;
+            padding-left: .2rem;
+            border-radius: 20px 0 0 20px;
+            background-color: $secondary_bg_color !important;
+            color: $white !important;
+            .icon {
+                transition: transform 1s !important;
+                transform: rotateX(0deg);
+            }
+        }
+        .slide-content {
+            padding: .5rem 1rem;
+            height: 100%;
+            .social-media {
+                display: grid;
+                grid-template-columns: repeat(var(--social-count), 1fr);
+                width: calc(100% - 2rem);
+                position: fixed;
+                bottom: 5%;
+                .footer-item {
+                    margin: auto;
+                    .link-icon {
+                        transform: scale(1.5);
+                    }
+                }
+            }
+            .navbar-items {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+                row-gap: .4rem;
+                .navbar-item {
+                    button {
+                        background-color: transparent;
+                        color: $white;
+                        text-transform: capitalize;
+                        padding: .5rem .3rem !important;
+                    }
+                }
+            }
+        }
+
+        &.open {
+            transform: translateZ(0);
+            .slide-button {
+                .icon {
+                    transform: rotateZ(180deg);
+                }
             }
         }
     }

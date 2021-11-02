@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import FooterItem from "@atoms/FooterItem/FooterItem";
 import NavItem from "@atoms/NavItem/NavItem";
 
@@ -8,6 +8,7 @@ const NavBar: React.FC = () => {
         <div className="navbar">
             <div className="navbar-icon">
                 <img src="assets/images/banner.png"/>
+                <div className="header-name">Swift<span className="split-text">Crate</span></div>
             </div>
             <div className="navbar-items">
                 <NavItem
@@ -23,7 +24,7 @@ const NavBar: React.FC = () => {
                     link="/contact"
                 />
             </div>
-            <div className="social-media">
+            <div className="social-media" style={{ "--social-count": 2} as CSSProperties}>
                 <FooterItem
                     title="Facebook"
                     icon="fab fa-facebook-square"

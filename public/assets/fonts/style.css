@@ -2,3 +2,8 @@
     font-family: TypoGraphica;
     src: url(./Typographica-Blp5.ttf);
 }
+
+@font-face {
+    font-family: IndieFlower;
+    src: url(./IndieFlower-Regular.ttf);
+}
