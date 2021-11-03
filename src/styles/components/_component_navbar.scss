@@ -47,7 +47,7 @@
         width: 100%;
         .navbar-item {
             margin-right: 1rem;
-            button {
+            a {
                 margin: 0;
                 padding: .5rem .7rem;
                 color: $white;
@@ -125,17 +125,18 @@
         }
     }
     .page-opacity {
-        transition: opacity 1s !important;
-        opacity: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2;
+        opacity: .5;
+        background-color: $primary_bg_color;
+        transition: transform .5s;
+        transform: translateX(-100vw);
         &.open {
-            z-index: 2;
-            background-color: $primary_bg_color;
-            opacity: .5;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            transform: translateX(0);
         }
     }
     .navbar-slide {
@@ -183,7 +184,7 @@
                 grid-template-rows: repeat(3, 1fr);
                 row-gap: .4rem;
                 .navbar-item {
-                    button {
+                    a {
                         background-color: transparent;
                         color: $white;
                         text-transform: capitalize;

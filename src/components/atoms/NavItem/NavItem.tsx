@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface INavItemProperties {
   title: string;
@@ -8,18 +7,15 @@ interface INavItemProperties {
 }
 
 const NavItem: React.FC<INavItemProperties> = ({ title, link }) => {
-    
-    const router = useRouter();
 
     return (
         <div className="navbar-item">
-            <Button
-                onClick={() => {
-                    router.push(link);
-                }}
+            <Link
+                href={link}
+                scroll
             >
                 {title}
-            </Button>
+            </Link>
         </div>
     );
 };

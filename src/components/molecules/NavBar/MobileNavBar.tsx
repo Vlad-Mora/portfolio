@@ -5,7 +5,7 @@ import Button from "@atoms/Button/Button";
 
 const MobileNavBar: React.FC = () => {
 
-    const [isActive, setIsActive] = React.useState(true);
+    const [isActive, setIsActive] = React.useState(false);
 
     return (
         <>
@@ -14,7 +14,7 @@ const MobileNavBar: React.FC = () => {
                     <img src="assets/images/banner.png"/>
                     <div className="header-name">Swift<span className="split-text">Crate</span></div>
                 </div>
-                <div className={`page-opacity ${isActive ? "open" : ""}`}/>
+                <div className={`page-opacity ${isActive ? "open" : ""}`} onClick={() => setIsActive(!isActive)}/>
                 <div className={`navbar-slide ${isActive ? "open" : ""}`}>
                     <Button
                         icon="angle left"
