@@ -13,6 +13,7 @@ const NavItem: React.FC<INavItemProperties> = ({ title, link }) => {
             <Link
                 href={link}
                 scroll
+                replace
             >
                 {title}
             </Link>
