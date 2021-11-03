@@ -1,4 +1,6 @@
 import React, { CSSProperties } from "react";
+import { useRouter } from "next/router";
+
 import FooterItem from "@atoms/FooterItem/FooterItem";
 import NavItem from "@atoms/NavItem/NavItem";
 import Button from "@atoms/Button/Button";
@@ -6,11 +8,12 @@ import Button from "@atoms/Button/Button";
 const MobileNavBar: React.FC = () => {
 
     const [isActive, setIsActive] = React.useState(false);
+    const router = useRouter();
 
     return (
         <>
             <div className="mobile-navbar">
-                <div className="navbar-icon">
+                <div className="navbar-icon" onClick={() => router.push("/")}>
                     <img src="assets/images/banner.png"/>
                     <div className="header-name">Swift<span className="split-text">Crate</span></div>
                 </div>
