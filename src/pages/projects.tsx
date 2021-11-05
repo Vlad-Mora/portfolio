@@ -6,6 +6,7 @@ import SimpleArraySum from "src/components/organisms/SimpleArraySum/SimpleArrayS
 import SolveMeFirst from "src/components/organisms/SolveMeFirst/SolveMeFirst";
 import SubarrayDivision from "src/components/organisms/SubarrayDivision/SubarrayDivision";
 import ClimbingTheLeaderboard from "@organisms/ClimbingTheLeaderboard/ClimbingTheLeaderboard";
+import BillDivision from "@organisms/BillDivision/BillDivision";
 
 const ProjectsPage = () => {
   const { pageNumber } = React.useContext(ContextContainer) as ContextProps;
@@ -14,6 +15,7 @@ const ProjectsPage = () => {
     <SimpleArraySum />,
     <SubarrayDivision />,
     <ClimbingTheLeaderboard />,
+    <BillDivision />,
   ];
 
   return (

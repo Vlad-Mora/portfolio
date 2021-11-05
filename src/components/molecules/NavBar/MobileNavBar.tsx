@@ -13,7 +13,7 @@ const MobileNavBar: React.FC = () => {
     return (
         <>
             <div className="mobile-navbar">
-                <div className="navbar-icon" onClick={() => router.push("/")}>
+                <div className="navbar-icon noselect" onClick={() => router.push("/")}>
                     <img src="assets/images/banner.png"/>
                     <div className="header-name">Swift<span className="split-text">Crate</span></div>
                 </div>

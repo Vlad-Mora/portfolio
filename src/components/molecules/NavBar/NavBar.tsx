@@ -1,12 +1,16 @@
 import React, { CSSProperties } from "react";
+import { useRouter } from "next/router";
+
 import FooterItem from "@atoms/FooterItem/FooterItem";
 import NavItem from "@atoms/NavItem/NavItem";
 
 const NavBar: React.FC = () => {
 
+    const router = useRouter();
+    
     return (
         <div className="navbar">
-            <div className="navbar-icon">
+            <div className="navbar-icon noselect" onClick={() => router.push("/")}>
                 <img src="assets/images/banner.png"/>
                 <div className="header-name">Swift<span className="split-text">Crate</span></div>
             </div>
