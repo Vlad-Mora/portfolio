@@ -15,7 +15,7 @@ const ProjectsPage = () => {
     <SimpleArraySum />,
     <SubarrayDivision />,
     <ClimbingTheLeaderboard />,
-    <BillDivision />
+    <BillDivision />,
   ];
 
   return (

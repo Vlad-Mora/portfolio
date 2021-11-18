@@ -20,7 +20,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         pageNumber,
         setPageNumber,
         spotifyLoggedIn,
-        setSpotifyLoggedIn
+        setSpotifyLoggedIn,
       }}
     >
       {children}
