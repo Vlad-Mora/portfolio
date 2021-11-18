@@ -2,19 +2,21 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 
 interface IInputFieldProperties {
-    onClick: () => void;
+    onClick?: () => void;
     className?: string;
     text?: string;
     icon?: string;
+    href?: string;
     disabled?: boolean;
     positive?: boolean;
     negative?: boolean;
 }
  
-const InputField: React.FC<IInputFieldProperties> = ({ className, text, onClick, disabled, icon, positive, negative }) => {
+const InputField: React.FC<IInputFieldProperties> = ({ className, text, onClick, disabled, icon, positive, negative, href }) => {
 
     return (
         <Button
+            href={href}
             className={`custom-button ${className ?? ""}`}
             content={text}
             onClick={onClick}
