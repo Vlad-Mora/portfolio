@@ -15,8 +15,12 @@ const AuthPage = () => {
   // const [expiresIn, setExpiresIn] = React.useState();
 
   React.useEffect(() => {
-    const code = new URLSearchParams(window.location.search);
-    console.log(code);
+    const error = new URLSearchParams(window.location.search).get("error");
+    if (error === undefined) {
+      const code = new URLSearchParams(window.location.search).get("code");
+      console.log(code);
+    }
+    console.log(error);
   }, []);
 
   return (

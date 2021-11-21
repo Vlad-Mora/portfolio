@@ -19,11 +19,12 @@ const IndexPage = () => {
 
   return (
     <>
-      <AuthPage />
-      {spotifyLoggedIn && (
+      {spotifyLoggedIn ? (
         <div className="content">
           <div>Done</div>
         </div>
+      ) : (
+        <AuthPage />
       )}
     </>
   );
