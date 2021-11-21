@@ -1,8 +1,12 @@
 import React from "react";
 // import axios from "axios";
 import AuthPage from "@pages/auth";
+import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const IndexPage = () => {
+  const { spotifyLoggedIn } = React.useContext(
+    ContextContainer
+  ) as ContextProps;
   // WORKING
   // axios.get("https://api.spotify.com/v1/me", {
   //   headers: {
@@ -14,11 +18,14 @@ const IndexPage = () => {
   // });
 
   return (
-    <div className="content">
-      <AuthPage>
-        <div>Done</div>
-      </AuthPage>
-    </div>
+    <>
+      <AuthPage />
+      {spotifyLoggedIn && (
+        <div className="content">
+          <div>Done</div>
+        </div>
+      )}
+    </>
   );
 };
 

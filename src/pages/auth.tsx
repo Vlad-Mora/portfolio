@@ -1,28 +1,32 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Button from "@atoms/Button/Button";
+import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
-const AuthPage = ({ children }: any) => {
+const AuthPage = () => {
+  const { spotifyLoggedIn } = React.useContext(
+    ContextContainer
+  ) as ContextProps;
   const AuthURL =
     "https://accounts.spotify.com/authorize?client_id=11c2b3cf750c474c8df6ed118f497f8a&response_type=code&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/auth/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
-  const [code] = React.useState<string>();
+  const router = useRouter();
   // const [accessToken, setAccessToken] = React.useState();
   // const [refreshToken, setRefreshToken] = React.useState();
   // const [expiresIn, setExpiresIn] = React.useState();
 
   React.useEffect(() => {
-    console.log(window.location.search);
-    // if (typeof window !== "undefined") {
-    //   const code = window.location.search;
-    //   code && setCode(code);
-    // }
-
-    // code !== undefined && console.log(code);
+    const code = new URLSearchParams(window.location.search).get("code");
+    console.log(code);
   }, []);
 
   return (
     <>
       <div className="content">
-        {code ? { children } : <Button href={AuthURL} text="Login" />}
+        {spotifyLoggedIn ? (
+          router.push("/spotify")
+        ) : (
+          <Button href={AuthURL} text="Login" />
+        )}
       </div>
     </>
   );
