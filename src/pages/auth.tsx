@@ -16,7 +16,7 @@ const AuthPage = () => {
 
   React.useEffect(() => {
     const error = new URLSearchParams(window.location.search).get("error");
-    if (error === undefined) {
+    if (error === null) {
       const code = new URLSearchParams(window.location.search).get("code");
       console.log(code);
     }
