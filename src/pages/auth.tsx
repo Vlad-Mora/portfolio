@@ -8,6 +8,8 @@ const AuthPage = () => {
     ContextContainer
   ) as ContextProps;
   const router = useRouter();
+  const clientID = "11c2b3cf750c474c8df6ed118f497f8a";
+  const clientSecret = "528d55e36d774afa8f52142b8078bfab";
   // const [accessToken, setAccessToken] = React.useState();
   // const [refreshToken, setRefreshToken] = React.useState();
   // const [expiresIn, setExpiresIn] = React.useState();
@@ -21,11 +23,19 @@ const AuthPage = () => {
       router.push("/spotify");
 
       axios
-        .post("https://api.spotify.com/api/token", {
-          grant_type: "authorization_code",
-          code: code,
-          redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/spotify/",
-        })
+        .post(
+          "https://accounts.spotify.com/api/token",
+          {
+            grant_type: "authorization_code",
+            code: code,
+            redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/spotify/",
+          },
+          {
+            headers: {
+              Authorization: `Basic ${btoa(`${clientID}:${clientSecret}`)}`,
+            },
+          }
+        )
         .then((response) => {
           console.log(response);
         })
