@@ -20,13 +20,13 @@ const IndexPage = () => {
 
   return (
     <>
-      {spotifyLoggedIn ? (
-        <div className="content">
+      <div className="content">
+        {spotifyLoggedIn ? (
           <div>Done</div>
-        </div>
-      ) : (
-        <Button href={AuthURL} text="Login" />
-      )}
+        ) : (
+          <Button href={AuthURL} text="Login" />
+        )}
+      </div>
     </>
   );
 };
