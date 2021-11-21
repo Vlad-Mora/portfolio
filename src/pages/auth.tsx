@@ -33,7 +33,7 @@ const AuthPage = () => {
           {
             headers: {
               Authorization: `Basic ${btoa(`${clientID}:${clientSecret}`)}`,
-              "Content-Type": "application/json",
+              "Content-Type": "application/x-www-form-urlencoded",
             },
           }
         )
