@@ -16,7 +16,7 @@ const IndexPage = () => {
   return (
     <div className="content">
       <AuthPage>
-        <div></div>
+        <div>Done</div>
       </AuthPage>
     </div>
   );
