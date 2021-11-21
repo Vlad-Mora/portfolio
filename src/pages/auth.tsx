@@ -10,12 +10,12 @@ const AuthPage = ({ children }: any) => {
   // const [expiresIn, setExpiresIn] = React.useState();
 
   if (typeof window !== "undefined") {
-    const code = new URLSearchParams(window.location.search).get("code");
+    const code = window.location.search;
     code && setCode(code);
   }
 
   React.useEffect(() => {
-    console.log(code);
+    code !== undefined && console.log(code);
   }, [code]);
 
   return (
