@@ -9,12 +9,12 @@ const AuthPage = ({ children }: any) => {
   // const [refreshToken, setRefreshToken] = React.useState();
   // const [expiresIn, setExpiresIn] = React.useState();
 
-  if (typeof window !== "undefined") {
-    const code = window.location.search;
-    code && setCode(code);
-  }
-
   React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const code = window.location.search;
+      code && setCode(code);
+    }
+
     code !== undefined && console.log(code);
   }, [code]);
 
