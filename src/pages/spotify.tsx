@@ -22,7 +22,7 @@ const IndexPage = () => {
     <>
       <div className="content">
         {spotifyLoggedIn ? (
-          <div>Done</div>
+          <div>Logged in</div>
         ) : (
           <Button href={AuthURL} text="Login" />
         )}
