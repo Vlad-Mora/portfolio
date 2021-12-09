@@ -22,11 +22,11 @@ const AuthPage = () => {
 
       axios
         .post(
-          `https://accounts.spotify.com/api/token?grant_type=authorization_code&code=${code}&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/spotify/`,
+          `https://accounts.spotify.com/api/token?grant_type=authorization_code&code=${code}&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/auth/`,
           {
             headers: {
               Authorization:
-                "Basic MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI=",
+                "Basic MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI",
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
