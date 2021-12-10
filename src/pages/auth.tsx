@@ -23,7 +23,6 @@ const AuthPage = () => {
       axios
         .post(
           `https://accounts.spotify.com/api/token?grant_type=authorization_code&code=${code}&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/auth/`,
-          {},
           {
             headers: {
               Authorization:
