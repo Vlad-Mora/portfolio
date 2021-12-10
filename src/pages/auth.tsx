@@ -19,13 +19,11 @@ const AuthPage = () => {
     if (error === null) {
       const code = new URLSearchParams(window.location.search).get("code");
 
-      const requestParams = new URLSearchParams();
-      requestParams.append("grant_type", "authorization_code");
-      requestParams.append("code", `${code}`);
-      requestParams.append(
-        "redirect_uri",
-        "https://vlad-mora-portofolio.herokuapp.com/auth/"
-      );
+      const requestParams = JSON.stringify({
+        grant_type: "authorization_code",
+        code: code,
+        redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/auth/",
+      });
 
       axios
         .post(
