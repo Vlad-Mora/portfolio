@@ -18,11 +18,19 @@ const AuthPage = () => {
     const error = new URLSearchParams(window.location.search).get("error");
     if (error === null) {
       const code = new URLSearchParams(window.location.search).get("code");
-      console.log(code);
+
+      const requestParams = new URLSearchParams();
+      requestParams.append("grant_type", "authorization_code");
+      requestParams.append("code", `${code}`);
+      requestParams.append(
+        "redirect_uri",
+        "https://vlad-mora-portofolio.herokuapp.com/auth/"
+      );
 
       axios
         .post(
-          `https://accounts.spotify.com/api/token?grant_type=authorization_code&code=${code}&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/auth/`,
+          `https://accounts.spotify.com/api/token`,
+          { requestParams },
           {
             headers: {
               Authorization:
