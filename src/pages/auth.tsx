@@ -19,24 +19,19 @@ const AuthPage = () => {
     if (error === null) {
       const code = new URLSearchParams(window.location.search).get("code");
 
-      const requestParams = JSON.stringify({
-        grant_type: "authorization_code",
-        code: code,
-        redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/auth/",
-      });
-
       axios
-        .post(
-          `https://accounts.spotify.com/api/token`,
-          { requestParams },
-          {
-            headers: {
-              Authorization:
-                "Basic MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI",
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-          }
-        )
+        .post(`https://accounts.spotify.com/api/token`, {
+          headers: {
+            Authorization:
+              "Basic MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          data: {
+            grant_type: "authorization_code",
+            code: code,
+            redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/auth/",
+          },
+        })
         .then((response) => {
           console.log(response);
         })
