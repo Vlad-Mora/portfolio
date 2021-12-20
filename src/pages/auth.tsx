@@ -28,9 +28,7 @@ const AuthPage = () => {
           }),
           {
             headers: {
-              Authorization: `Basic ${btoa(
-                process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET
-              )}`,
+              Authorization: `Basic ${process.env.CLIENT_ID_SECRET_ENCODED}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
