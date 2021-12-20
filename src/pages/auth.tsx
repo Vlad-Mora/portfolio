@@ -28,7 +28,7 @@ const AuthPage = () => {
           }),
           {
             headers: {
-              Authorization: `Basic ${process.env.CLIENT_ID_SECRET_ENCODED}`,
+              Authorization: `Basic ${process.env.REACT_APP_CLIENT_ID_SECRET_ENCODED}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
