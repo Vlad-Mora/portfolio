@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import axios from "axios";
 import queryString from "query-string";
 
@@ -11,11 +11,13 @@ const AuthPage = () => {
   const { setSpotifyLoggedIn } = React.useContext(
     ContextContainer
   ) as ContextProps;
-  const router = useRouter();
+  // const router = useRouter();
   const encodedClientIDSecret =
     "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
+  console.log("1");
   React.useEffect(() => {
+    console.log("2");
     const error = new URLSearchParams(window.location.search).get("error");
     if (error === null) {
       const code = new URLSearchParams(window.location.search).get("code");
@@ -36,6 +38,7 @@ const AuthPage = () => {
           }
         )
         .then((response: IAccessTokenRequestProps) => {
+          console.log("3");
           setCookie(
             "refreshToken",
             { refreshToken: response.data.refresh_token },
@@ -48,7 +51,7 @@ const AuthPage = () => {
           );
 
           setSpotifyLoggedIn(true);
-          router.push("/spotify");
+          // router.push("/spotify");
         })
         .catch((error) => {
           console.log("**ERROR:", error);
