@@ -12,22 +12,14 @@ const AuthPage = () => {
     ContextContainer
   ) as ContextProps;
   // const router = useRouter();
-  // const encodedClientIDSecret =
-  //   "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
+  const encodedClientIDSecret =
+    "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
-  console.log("1");
   React.useEffect(() => {
     const error = new URLSearchParams(window.location.search).get("error");
     if (error === null) {
       const code = new URLSearchParams(window.location.search).get("code");
-      console.log(code);
-      console.log(
-        queryString.stringify({
-          grant_type: "authorization_code",
-          code: code,
-          redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/auth/",
-        })
-      );
+
       axios
         .post(
           `https://accounts.spotify.com/api/token`,
@@ -38,8 +30,7 @@ const AuthPage = () => {
           }),
           {
             headers: {
-              Authorization:
-                "Basic MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI",
+              Authorization: `Basic ${encodedClientIDSecret}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }
