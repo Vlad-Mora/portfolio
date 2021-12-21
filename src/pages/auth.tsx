@@ -54,7 +54,7 @@ const AuthPage = () => {
           console.log("**ERROR:", error);
         });
     }
-  }, []);
+  });
 
   return <></>;
 };
