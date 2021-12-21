@@ -1,5 +1,5 @@
 import React from "react";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import axios from "axios";
 import queryString from "query-string";
 
@@ -11,7 +11,7 @@ const AuthPage = () => {
   const { setSpotifyLoggedIn } = React.useContext(
     ContextContainer
   ) as ContextProps;
-  // const router = useRouter();
+  const router = useRouter();
   const encodedClientIDSecret =
     "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
@@ -49,14 +49,11 @@ const AuthPage = () => {
           );
 
           setSpotifyLoggedIn(true);
-          // router.push("/spotify");
+          router.push("/spotify");
         })
         .catch((error) => {
           console.log("**ERROR:", error);
         });
-
-      setSpotifyLoggedIn(true);
-      // router.push("/spotify");
     }
   }, []);
 
