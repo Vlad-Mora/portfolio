@@ -5,7 +5,7 @@ import queryString from "query-string";
 
 import { setCookie } from "@helpers/cookieFunctions";
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
-import { IAccessTokenRequestProps } from "@interfaces/requests";
+import { IAccessTokenDataProps } from "@interfaces/requests";
 
 const AuthPage = () => {
   const { setSpotifyLoggedIn } = React.useContext(
@@ -35,8 +35,7 @@ const AuthPage = () => {
             },
           }
         )
-        .then((response: IAccessTokenRequestProps) => {
-          console.log(response);
+        .then((response: IAccessTokenDataProps) => {
           setCookie(
             "refreshToken",
             { refreshToken: response.data.refresh_token },
