@@ -5,7 +5,12 @@ import queryString from "query-string";
 import Button from "@atoms/Button/Button";
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 import { getLocalCookie, setCookie } from "@helpers/cookieFunctions";
-import { IRefreshTokenRequestProps } from "@interfaces/requests";
+import {
+  IProfileDataProps,
+  IRefreshTokenRequestProps,
+} from "@interfaces/requests";
+import { handleRequest } from "@helpers/authFunctions";
+import SpotifyNavBar from "@molecules/NavBar/SpotifyNavBar";
 
 const IndexPage = () => {
   const AuthURL =
@@ -13,12 +18,13 @@ const IndexPage = () => {
   const { spotifyLoggedIn, setSpotifyLoggedIn } = React.useContext(
     ContextContainer
   ) as ContextProps;
+  const [profileData, setProfileData] = React.useState<IProfileDataProps>();
   const encodedClientIDSecret =
     "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
   React.useEffect(() => {
     // @ts-ignore
-    const refreshToken = getLocalCookie("refreshToken")["refreshToken"];
+    const refreshToken = Object.values(getLocalCookie("refreshToken"))[0];
     if (getLocalCookie("accessToken") !== undefined) {
       setSpotifyLoggedIn(true);
     } else {
@@ -52,13 +58,38 @@ const IndexPage = () => {
         setSpotifyLoggedIn(false);
       }
     }
+
+    if (spotifyLoggedIn && profileData === undefined) {
+      // @ts-ignore
+      const accessToken = Object.values(getLocalCookie("accessToken"))[0];
+      handleRequest({
+        url: "/v1/me",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+        .then((response: any) => {
+          setProfileData(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   });
 
   return (
     <>
       <div className="content">
         {spotifyLoggedIn ? (
-          <div>Logged in</div>
+          <>
+            <div className="spotify">
+              <SpotifyNavBar
+                name={profileData?.display_name}
+                images={profileData?.images}
+              />
+              Test
+            </div>
+          </>
         ) : (
           <Button href={AuthURL} text="Login" />
         )}

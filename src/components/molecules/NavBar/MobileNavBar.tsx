@@ -33,12 +33,12 @@ const MobileNavBar: React.FC = () => {
                                 link="/"
                             />
                             <NavItem
-                                title="Projects"
+                                title="projects"
                                 link="/projects"
                             />
                             <NavItem
-                                title="contact"
-                                link="/contact"
+                                title="spotify clone"
+                                link="/spotify"
                             />
                         </div>
                         <div className="social-media" style={{ "--social-count": 2} as CSSProperties}>

@@ -16,3 +16,25 @@ export interface IRefreshTokenRequestProps {
     expires_in: number;
   };
 }
+
+export interface IProfileDataProps {
+  display_name: string;
+  external_urls: {
+    [key: string]: string;
+  };
+  followers: {
+    href: string;
+    total: number;
+  };
+  href: string;
+  id: string;
+  images: IProfilePictureProps[];
+  type: string;
+  uri: string;
+}
+
+export interface IProfilePictureProps {
+  height: number;
+  width: number;
+  url: string;
+}

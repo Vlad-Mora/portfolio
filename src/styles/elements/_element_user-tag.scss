@@ -1,0 +1,42 @@
+.spotify {
+    width: 100%;
+    height: 100vh;
+    .spotify-navbar {
+        width: 100%;
+        height: 5rem;
+        .userTag-wrapper {
+            position: absolute;
+            right: 2rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 5px 5px 10px $black;
+            width: 10rem;
+            height: 3.5rem;
+            background-color: $spotify_green_color;
+            .userTag-image {
+                margin-right: .5rem;
+                width: calc(var(--pfpWidth) + 5px);
+                height: calc(var(--pfpHeight) + 5px);
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .fa-user {
+                width: 2.5rem;
+                height: 2.5rem;
+                margin-right: .3rem;
+            }
+            .userTag-name {
+                font-size: 1.6rem;
+                font-weight: bold;
+            }
+            &:hover {
+                background-color: $green_bright_color;
+            }
+        }
+    }
+}
