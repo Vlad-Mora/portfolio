@@ -14,7 +14,7 @@ import SpotifyNavBar from "@molecules/NavBar/SpotifyNavBar";
 
 const IndexPage = () => {
   const AuthURL =
-    "https://accounts.spotify.com/authorize?client_id=11c2b3cf750c474c8df6ed118f497f8a&response_type=code&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/auth/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+    "https://accounts.spotify.com/authorize?client_id=11c2b3cf750c474c8df6ed118f497f8a&response_type=code&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/spotify/auth/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
   const { spotifyLoggedIn, setSpotifyLoggedIn } = React.useContext(
     ContextContainer
   ) as ContextProps;
@@ -22,9 +22,14 @@ const IndexPage = () => {
   const encodedClientIDSecret =
     "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
-  React.useEffect(() => {
-    // @ts-ignore
-    const refreshToken = Object.values(getLocalCookie("refreshToken"))[0];
+  React.useEffect(() => {        
+    if (getLocalCookie("refreshToken") !== undefined) {
+        // @ts-ignore
+        var refreshToken = Object.values(getLocalCookie("refreshToken"))[0];
+    } else {
+        setSpotifyLoggedIn(false);
+    }
+    
     if (getLocalCookie("accessToken") !== undefined) {
       setSpotifyLoggedIn(true);
     } else {
@@ -59,7 +64,7 @@ const IndexPage = () => {
       }
     }
 
-    if (spotifyLoggedIn && profileData === undefined) {
+    if (spotifyLoggedIn && (profileData === undefined || profileData === null)) {
       // @ts-ignore
       const accessToken = Object.values(getLocalCookie("accessToken"))[0];
       handleRequest({

@@ -26,7 +26,7 @@ const AuthPage = () => {
           queryString.stringify({
             grant_type: "authorization_code",
             code: code,
-            redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/auth/",
+            redirect_uri: "https://vlad-mora-portofolio.herokuapp.com/spotify/auth/",
           }),
           {
             headers: {
