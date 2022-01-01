@@ -28,6 +28,11 @@
             }
             .menu-wrapper {
                 display: none;
+                a {
+                    &::after {
+                        content: "*"
+                    }
+                }
                 &.true {
                     border-radius: .2rem;
                     display: block;
@@ -36,13 +41,13 @@
                     position: absolute;
                     z-index: 1;
                     bottom: .7rem;
-                    right: 4rem;
+                    right: 5rem;
                     padding: .2rem .4rem;
                     width: 7rem;
-                    background-color: $grey_color;
-                    color: $white;
                     font-weight: bold;
                     font-size: 1.3rem;
+                    color: $white;
+                    background-color: $grey_color;
                     &::after {
                         content: "";
                         position: absolute;
@@ -53,6 +58,10 @@
                         width: 1.5rem;
                         background-color: inherit;
                     }
+                }
+                .name {
+                    text-decoration: none;
+                    color: $white !important;
                 }
             }
             &:hover {

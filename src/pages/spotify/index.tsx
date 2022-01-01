@@ -91,6 +91,7 @@ const IndexPage = () => {
               <SpotifyNavBar
                 name={profileData?.display_name}
                 images={profileData?.images}
+                profileLink={profileData?.external_urls["spotify"]}
               />
               Test
             </div>

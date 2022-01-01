@@ -5,11 +5,12 @@ import { IProfilePictureProps } from "@interfaces/requests";
 interface ISpotifyNavBarProps {
     name: string | undefined;
     images: IProfilePictureProps[] | undefined;
+    profileLink: string | undefined;
 }
 
-const SpotifyNavBar: React.FC<ISpotifyNavBarProps> = ({ name, images }) => {
+const SpotifyNavBar: React.FC<ISpotifyNavBarProps> = ({ name, images, profileLink }) => {
 
-    const [menuActive, setMenuActive] = React.useState<boolean>(true);
+    const [menuActive, setMenuActive] = React.useState<boolean>(false);
 
     return (
         <div className="spotify-navbar">
@@ -21,7 +22,7 @@ const SpotifyNavBar: React.FC<ISpotifyNavBarProps> = ({ name, images }) => {
                     }
                 </div>
                 <div className={`menu-wrapper ${menuActive}`}>
-                    <div className="name">{name}</div>
+                    <a className="name noselect" href={profileLink}>{name}</a>
                 </div>
             </div>
         </div>
