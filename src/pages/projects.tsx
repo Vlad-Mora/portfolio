@@ -1,28 +1,34 @@
+import ProjectSlot from "@atoms/ProjectSlot/ProjectSlot";
 import React from "react";
 
-import { ContextContainer, ContextProps } from "src/context/ContextContainer";
-import Pager from "src/components/atoms/Pager/Pager";
-import SimpleArraySum from "src/components/organisms/SimpleArraySum/SimpleArraySum";
-import SolveMeFirst from "src/components/organisms/SolveMeFirst/SolveMeFirst";
-import SubarrayDivision from "src/components/organisms/SubarrayDivision/SubarrayDivision";
-import ClimbingTheLeaderboard from "@organisms/ClimbingTheLeaderboard/ClimbingTheLeaderboard";
-import BillDivision from "@organisms/BillDivision/BillDivision";
+interface ProjectProps {
+  title: string;
+  link: string;
+  image: string;
+}
 
 const ProjectsPage = () => {
-  const { pageNumber } = React.useContext(ContextContainer) as ContextProps;
-  const projects = [
-    <SolveMeFirst />,
-    <SimpleArraySum />,
-    <SubarrayDivision />,
-    <ClimbingTheLeaderboard />,
-    <BillDivision />,
+  const projects: ProjectProps[] = [
+    {
+      title: "Spotify",
+      link: "/spotify",
+      image:
+        "https://phmg.com/images/default-source/default-album/banner_alt3ddd59f84cd34b5ba4685ac80af3641d.jpg",
+    },
   ];
 
   return (
-    <div className="content">
-      <Pager totalPages={projects.length} />
-      {projects[pageNumber]}
-    </div>
+    <>
+      <div className="projects-container">
+        {projects.map((project) => (
+          <ProjectSlot
+            title={project.title}
+            link={project.link}
+            image={project.image}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

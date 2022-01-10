@@ -12,8 +12,6 @@ const AuthPage = () => {
     ContextContainer
   ) as ContextProps;
   const router = useRouter();
-  const encodedClientIDSecret =
-    "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
   React.useEffect(() => {
     const error = new URLSearchParams(window.location.search).get("error");
@@ -30,7 +28,7 @@ const AuthPage = () => {
           }),
           {
             headers: {
-              Authorization: `Basic ${encodedClientIDSecret}`,
+              Authorization: `Basic ${process.env.REACT_APP_CLIENT_ID_SECRET_ENCODED}`,
               "Content-Type": "application/x-www-form-urlencoded",
             },
           }

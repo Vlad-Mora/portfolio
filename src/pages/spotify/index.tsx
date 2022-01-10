@@ -14,13 +14,11 @@ import SpotifyNavBar from "@molecules/NavBar/SpotifyNavBar";
 
 const IndexPage = () => {
   const AuthURL =
-    "https://accounts.spotify.com/authorize?client_id=11c2b3cf750c474c8df6ed118f497f8a&response_type=code&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/spotify/auth/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+    `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=https://vlad-mora-portofolio.herokuapp.com/spotify/auth/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
   const { spotifyLoggedIn, setSpotifyLoggedIn } = React.useContext(
     ContextContainer
   ) as ContextProps;
   const [profileData, setProfileData] = React.useState<IProfileDataProps>();
-  const encodedClientIDSecret =
-    "MTFjMmIzY2Y3NTBjNDc0YzhkZjZlZDExOGY0OTdmOGE6NTI4ZDU1ZTM2ZDc3NGFmYThmNTIxNDJiODA3OGJmYWI";
 
   React.useEffect(() => {        
     if (getLocalCookie("refreshToken") !== undefined) {
@@ -43,7 +41,7 @@ const IndexPage = () => {
             }),
             {
               headers: {
-                Authorization: `Basic ${encodedClientIDSecret}`,
+                Authorization: `Basic ${process.env.REACT_APP_CLIENT_ID_SECRET_ENCODED}`,
                 "Content-Type": "application/x-www-form-urlencoded",
               },
             }

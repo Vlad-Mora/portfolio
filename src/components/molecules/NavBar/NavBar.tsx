@@ -24,8 +24,8 @@ const NavBar: React.FC = () => {
                     link="/projects"
                 />
                 <NavItem
-                    title="spotify clone"
-                    link="/spotify"
+                    title="contact"
+                    link="/contact"
                 />
             </div>
             <div className="social-media" style={{ "--social-count": 2} as CSSProperties}>
