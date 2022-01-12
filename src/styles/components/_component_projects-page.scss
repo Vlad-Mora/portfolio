@@ -1,47 +1,3 @@
-// .project-wrapper {
-//     margin-left: calc(100vw - 50%);
-//     .project-title {
-//         text-decoration: none;
-//         color: $black;
-//         font-weight: bolder;
-//         font-size: 2rem;
-//         position: relative;
-//         &:hover {
-//             color: $purple_bright_color;
-//             &::before {
-//                 visibility: visible;
-//                 width: 100%;
-//             }
-//         }
-//         &::before {
-//             content: "";
-//             position: absolute;
-//             width: 0;
-//             height: .1rem;
-//             bottom: 0;
-//             left: 0;
-//             background-color: #000;
-//             visibility: hidden;
-//             transition: all 0.4s ease-in-out;
-//         }
-//     }
-//     .project-content {
-//         display: grid;
-//         row-gap: .5rem;
-//         margin: 1rem 0;
-//         .project-input {
-//             display: grid;
-//             grid-template-columns: repeat(var(--inputCount), 1fr);
-//             .custom-input-field {
-//                 padding: .3rem .8rem;
-//             }
-//         }
-//         .project-output {
-//             font-size: 1.3rem;
-//         }
-//     }
-// }
-
 .projects-container {
     display: grid;
     grid-gap: 1rem;
@@ -55,7 +11,7 @@
         .project-link {
             height: 100%;
             color: $purple_bright_color;
-            text-shadow: -2px -2px 0 $black, 2px -2px 0 $black, -2px 2px 0 $black, 2px 2px 0 $black;
+            text-shadow: 3px 3px $white;
             text-decoration: none;
             font-weight: bolder;
             font-size: 2.5rem;

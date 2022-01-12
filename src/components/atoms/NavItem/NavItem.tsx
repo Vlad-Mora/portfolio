@@ -1,5 +1,6 @@
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
+
 
 interface INavItemProperties {
   title: string;
@@ -8,16 +9,29 @@ interface INavItemProperties {
 
 const NavItem: React.FC<INavItemProperties> = ({ title, link }) => {
 
+    const router = useRouter();
+    const currentPage = router.route;
+    const [isActive, setIsActive] = React.useState<boolean>(false);
+
+    React.useEffect(() => {
+        if (link !== "/") {
+            currentPage.includes(link)
+            ? setIsActive(true)
+            : setIsActive(false);
+        } else {
+            link === currentPage
+            ? setIsActive(true)
+            : setIsActive(false);
+        }
+    }, [])
+
     return (
-        <div className="navbar-item">
-            <Link
-                href={link}
-                scroll
-                replace
-            >
-                {title}
-            </Link>
-        </div>
+        <a
+            href={link}
+            className={`navbar-item ${isActive ? "active" : ""}`}
+        >
+            {title}
+        </a>
     );
 };
 export default React.memo(NavItem);

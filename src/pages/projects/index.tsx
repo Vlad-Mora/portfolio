@@ -5,16 +5,24 @@ interface ProjectProps {
   title: string;
   link: string;
   image: string;
+  color: string;
 }
 
 const ProjectsPage = () => {
   const projects: ProjectProps[] = [
     {
-      title: "Spotify",
-      link: "/spotify",
+      title: "",
+      link: "/projects/spotify",
       image:
-        "https://phmg.com/images/default-source/default-album/banner_alt3ddd59f84cd34b5ba4685ac80af3641d.jpg",
+        "https://www.scdn.co/i/_global/open-graph-default.png",
+      color: ""
     },
+    {
+      title: "",
+      link: "/projects/hackerrank",
+      image: "http://vandtech.weebly.com/uploads/6/3/0/1/63016701/3140491_orig.png",
+      color: ""
+    }
   ];
 
   return (
@@ -25,6 +33,7 @@ const ProjectsPage = () => {
             title={project.title}
             link={project.link}
             image={project.image}
+            color={project.color}
           />
         ))}
       </div>

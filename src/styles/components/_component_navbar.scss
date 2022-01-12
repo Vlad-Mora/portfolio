@@ -5,16 +5,12 @@
 .navbar {
     z-index: 2;
     top: 0;
-    width: 100%;
     height: 5rem;
-    background-color: $grey_color;
+    background: $grey_color;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
     padding: .2rem 1rem;
     color: $white;
-
     .navbar-icon {
         display: grid;
         grid-template-columns: 4.5rem 1fr;
@@ -23,8 +19,9 @@
         font-weight: bold;
         font-size: 1.5rem;
         width: 13rem;
+        position: fixed;
+        left: 1rem;
         cursor: pointer;
-        
         .header-name {
             position: relative;
             top: -15%;
@@ -38,32 +35,37 @@
             width: 4.5rem;
         }
     }
-
     .navbar-items {
         display: flex;
-        flex-direction: row;
         align-items: center;
-        justify-content: center;
-        width: 100%;
+        position: fixed;
+        top: 3rem;
+        left: 17rem;
+        text-align: center;
+        overflow: hidden;
         .navbar-item {
-            margin-right: 1rem;
-            a {
-                margin: 0;
-                padding: .5rem .7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $purple_bright_color;
+            text-transform: capitalize;
+            font-weight: bolder;
+            font-size: 1.2rem;
+            color: $white;
+            width: 8rem;
+            height: 2rem;
+            padding: .5rem;
+            margin-right: .2rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            &.active {
+                border: 3px solid $purple_bright_color;
+                border-bottom: none;
+                background: $grey_color;
                 color: $white;
-                text-transform: uppercase;
-                font-weight: bolder;
-                font-size: 1.3rem;
-                font-family: TypoGraphica;
-                border-radius: 1rem;
-                box-shadow: 0 0 0;
-                transition: all 0.5s ease-out;
-                background-color: $purple_dark_color;
-
-                &:hover {
-                    background-color: $purple_bright_color;
-                    box-shadow: 0 0px 10px;
-                }
+            }
+            &:hover {
+                background: $grey_light_color;
             }
         }
     }
@@ -73,6 +75,8 @@
         grid-template-columns: repeat(var(--social-count), 1fr);
         justify-content: center;
         align-items: center;
+        position: fixed;
+        right: 1rem;
         .footer-item {
             margin: .5rem;
             svg {
@@ -92,7 +96,7 @@
         top: 0;
         width: 100%;
         height: 5rem;
-        background-color: $grey_color;
+        background: $grey_color;
         display: flex;
         align-items: left;
         justify-content: center;
@@ -132,7 +136,7 @@
         height: 100vh;
         z-index: 2;
         opacity: .5;
-        background-color: $primary_bg_color;
+        background: $primary_bg_color;
         transition: transform .5s;
         transform: translateX(-100vw);
         &.open {
@@ -146,7 +150,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        background-color: $secondary_bg_color;
+        background: $secondary_bg_color;
         transition: transform .5s;
         transform: translateX(10rem);
         .slide-button {
@@ -156,7 +160,7 @@
             padding: .5rem .2rem !important;
             padding-left: .2rem;
             border-radius: 20px 0 0 20px;
-            background-color: $secondary_bg_color !important;
+            background: $secondary_bg_color !important;
             color: $white !important;
             .icon {
                 transition: transform 1s !important;
@@ -186,7 +190,7 @@
                 row-gap: .4rem;
                 .navbar-item {
                     a {
-                        background-color: transparent;
+                        background: transparent;
                         color: $white;
                         text-transform: capitalize;
                         padding: .5rem .3rem !important;

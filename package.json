@@ -34,6 +34,7 @@
     "react-lottie": "^1.2.3",
     "react-lottie-wrapper": "^1.1.8",
     "react-pdf": "^5.5.0",
+    "react-router-dom": "^6.2.1",
     "react-tippy": "^1.4.0",
     "registry-auth-token": "^4.2.1",
     "retry-axios": "^2.6.0",
