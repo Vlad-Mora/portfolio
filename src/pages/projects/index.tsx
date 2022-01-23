@@ -22,6 +22,12 @@ const ProjectsPage = () => {
       link: "/projects/hackerrank",
       image: "http://vandtech.weebly.com/uploads/6/3/0/1/63016701/3140491_orig.png",
       color: ""
+    },
+    {
+      title: "Vending Machine",
+      link: "/projects/vendingmachine",
+      image: "https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg",
+      color: ""
     }
   ];
 

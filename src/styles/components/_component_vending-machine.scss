@@ -1,0 +1,95 @@
+.content {
+    height: 100%;
+    .vending-machine-wrapper {
+        width: 40rem;
+        height: 50rem;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: 10% 90%;
+        background: $black_light_color;
+        border-radius: 15px;
+        padding: .5rem;
+        color: $white;
+        align-content: center;
+        justify-content: center;
+        .vending-machine-name {
+            margin: 0 auto;
+            width: fit-content;
+            align-self: center;
+            text-transform: uppercase;
+            font-size: 3rem;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        .vending-machine-display {
+            display: grid;
+            grid-auto-flow: row;
+            justify-content: center;
+            align-content: center;
+            grid-template-columns: repeat(5, 4rem);
+            grid-template-rows: repeat(6, 5rem);
+            gap: .5rem;
+            .item-wrapper {
+                background: $red_color;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 5rem; // same height as div
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    margin-top: -3px;
+                    border-bottom: solid 3px $selected;
+                    transform: scaleX(0);
+                    transition: transform 250ms ease-in-out;
+                }
+                &.selected {
+                    background: $red_dark_color !important;
+                    &::after {
+                        transform: scaleX(1);
+                    }
+                }
+                &.unaffordable {
+                    background: $unaffordable;
+                }
+            }
+        }
+        .vending-machine-keypad {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: -8.5rem;
+            .keypad-keys {
+                display: grid;
+                grid-auto-flow: row;
+                margin: 0 auto;
+                height: 15rem;
+                width: 10rem;
+                justify-content: center;
+                align-content: center;
+                grid-template-columns: repeat(3, 3rem);
+                grid-template-rows: repeat(3, 3rem);
+                gap: .5rem;
+                .key {
+                    height: 100%;
+                    width: 100%;
+                    padding: 0;
+                    &:nth-last-child(1) {
+                        grid-column: 2;
+                    }
+                }
+                .return-key {
+                    margin: 0;
+                }
+            }
+            .keypad-confirm-button,
+            .keypad-purchase-button {
+                margin: 0 auto;
+                width: 12rem;
+                text-transform: uppercase;
+                align-content: center;
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}
