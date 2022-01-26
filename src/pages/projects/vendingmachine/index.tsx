@@ -2,6 +2,7 @@ import React from "react";
 
 import VendingMachineDisplay from "@molecules/VendingMachineDisplay/VendingMachineDisplay";
 import KeyPad from "@molecules/KeyPad/KeyPad";
+import UnavailableContent from "@atoms/UnavailableContent/UnavailableContent";
 
 const ContactPage = () => {
 
@@ -12,6 +13,7 @@ const ContactPage = () => {
                 <VendingMachineDisplay/>
                 <KeyPad/>
             </div>
+            <UnavailableContent/>
         </div>
     );
 };

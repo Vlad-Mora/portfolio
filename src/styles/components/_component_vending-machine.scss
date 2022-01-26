@@ -1,5 +1,8 @@
 .content {
     height: 100%;
+    .unavailable-content {
+        display: none;
+    }
     .vending-machine-wrapper {
         width: 40rem;
         height: 50rem;
@@ -91,5 +94,12 @@
                 margin-bottom: .5rem;
             }
         }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .vending-machine-wrapper {
+        display: none !important;
     }
 }

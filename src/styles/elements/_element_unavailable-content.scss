@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+    .unavailable-content {
+        padding-top: 32.5vh;
+        display: inline-block !important;
+        position: absolute;
+        right: 0;
+        height: calc(100vh - 8rem);
+        width: 100vw;
+        font-size: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        vertical-align: middle;
+        background: linear-gradient(right, $purple_bright_color, white);
+    }
+}
