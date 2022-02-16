@@ -1,6 +1,7 @@
 import React from "react";
 import { useEasybase } from "easybase-react";
 import { Header, Input, Modal, Icon, Button, Segment, Grid, Divider } from "semantic-ui-react";
+import md5 from "md5";
 
 import { TravelAgencyUserProps } from "@interfaces/index";
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
@@ -100,7 +101,7 @@ const LoginModal: React.FC = () => {
                                 <Input
                                     label="Password:"
                                     labelPosition="left"
-                                    onChange={(_, data) => setPassword(data.value)}
+                                    onChange={(_, data) => setPassword(md5(data.value))}
                                     type="password"
                                 />
                                 <Button
@@ -138,7 +139,7 @@ const LoginModal: React.FC = () => {
                                     className="modal-input"
                                     label="Password"
                                     labelPosition="left"
-                                    onChange={(_, data) => setRegisterPassword(data.value)}
+                                    onChange={(_, data) => setRegisterPassword(md5(data.value))}
                                     type="password"
                                 />
                                 <Button
