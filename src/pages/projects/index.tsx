@@ -28,6 +28,12 @@ const ProjectsPage = () => {
       link: "/projects/vendingmachine",
       image: "https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg",
       color: ""
+    },
+    {
+      title: "Travel Agency",
+      link: "/projects/travelagency",
+      image: "https://www.welcome-hotels.com/site/assets/files/8073/istock-513702887.2560x1600.jpg",
+      color: "#4a4a4a"
     }
   ];
 

@@ -18,3 +18,8 @@ body {
         margin-top: 4rem;
     }
 }
+
+::selection {
+    background-color: $purple_bright_color;
+    color: $white;
+}

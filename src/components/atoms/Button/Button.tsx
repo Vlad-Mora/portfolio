@@ -4,7 +4,7 @@ import { Button } from "semantic-ui-react";
 interface IInputFieldProperties {
     onClick?: () => void;
     className?: string;
-    text?: string;
+    text?: React.ReactNode;
     icon?: string;
     href?: string;
     disabled?: boolean;

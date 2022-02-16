@@ -1,5 +1,7 @@
-import { ItemProps } from "@interfaces/items";
 import React from "react";
+
+import { TravelAgencyUserProps, UserCartProps } from "@interfaces/index";
+import { ItemProps } from "@interfaces/items";
 
 export interface ContextProps {
   // HackerRank
@@ -19,6 +21,15 @@ export interface ContextProps {
   setSelectedItems: React.Dispatch<React.SetStateAction<string[]>>;
   items: ItemProps[];
   setItems: React.Dispatch<React.SetStateAction<ItemProps[]>>;
+  // Travel Agency
+  user: TravelAgencyUserProps | undefined;
+  setUser: React.Dispatch<
+    React.SetStateAction<TravelAgencyUserProps | undefined>
+  >;
+  userCart: UserCartProps[] | undefined;
+  setUserCart: React.Dispatch<
+    React.SetStateAction<UserCartProps[] | undefined>
+  >;
 }
 
 export const ContextContainer = React.createContext<ContextProps | null>(null);
@@ -45,7 +56,9 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [insertAmount, setInsertAmount] = React.useState<string>("0");
   const [totalCost, setTotalCost] = React.useState<number>(0);
   const [currentBalance, setCurrentBalance] = React.useState<number>(0);
-
+  // Travel Agency
+  const [user, setUser] = React.useState<TravelAgencyUserProps | undefined>();
+  const [userCart, setUserCart] = React.useState<UserCartProps[] | undefined>();
   return (
     <ContextContainer.Provider
       value={{
@@ -66,6 +79,11 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         setSelectedItems,
         totalCost,
         setTotalCost,
+        // Travel Agency
+        user,
+        setUser,
+        userCart,
+        setUserCart,
       }}
     >
       {children}
