@@ -7,9 +7,11 @@ import NavItem from "@atoms/NavItem/NavItem";
 const NavBar: React.FC = () => {
 
     const router = useRouter();
+    const currentPage = router.route;
+    const isPageCV = currentPage.includes("cv") ? "hidden" : "";
     
     return (
-        <div className="navbar noselect">
+        <div className={`navbar noselect ${isPageCV}`}>
             <div className="navbar-icon" onClick={() => router.push("/")}>
                 <img src="assets/images/banner.png"/>
                 <div className="header-name">Swift<span className="split-text">Crate</span></div>

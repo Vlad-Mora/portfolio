@@ -6,6 +6,13 @@ body {
     padding: .5rem 1rem;
     overflow-y: scroll;
     height: calc(100vh - 5rem - 2rem);
+    &.full-size {
+        height: calc(100vh - 2rem);
+        .cv-content {
+            height: fit-content;
+            margin: 5vh auto !important;
+        }
+    }
 }
 
 .content {

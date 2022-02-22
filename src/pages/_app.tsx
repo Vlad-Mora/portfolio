@@ -7,6 +7,7 @@ import ebconfig from "../ebconfig.js";
 import { ContextProvider } from "@context/ContextContainer";
 
 import PageLayout from "@templates/PageLayout/PageLayout";
+import { useRouter } from "next/router";
 
 import "react-tippy/dist/tippy.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
@@ -17,6 +18,10 @@ import "react-multi-carousel/lib/styles.css";
 interface IAppProps extends AppProps {}
 
 function App({ Component, pageProps }: IAppProps) {
+  const router = useRouter();
+  const currentPage = router.route;
+  const isPageCV = currentPage.includes("cv") ? "full-size" : "";
+
   return (
     <>
       <EasybaseProvider ebconfig={ebconfig}>
@@ -39,7 +44,7 @@ function App({ Component, pageProps }: IAppProps) {
         </Head>
         <ContextProvider>
           <PageLayout>
-            <div className="app_pagelayout">
+            <div className={`app_pagelayout ${isPageCV}`}>
               <Component {...pageProps} />
             </div>
           </PageLayout>
