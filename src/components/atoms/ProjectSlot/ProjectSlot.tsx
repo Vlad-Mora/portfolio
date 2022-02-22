@@ -1,16 +1,11 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
-interface INavItemProperties {
-  title: string;
-  link: string;
-  image: string;
-  color: string;
-}
+import { ProjectProps } from "@pages/projects";
 
-const NavItem: React.FC<INavItemProperties> = ({ title, link, image, color }) => {
+const NavItem: React.FC<ProjectProps> = ({ title, link, image, color, state }) => {
 
     return (
-        <div className="project-slot" style={{ backgroundImage: `url(${image})` }}>
+        <div className={`project-slot ${state}`} style={{ backgroundImage: `url(${image})`, "--state": `"${state}"`} as CSSProperties}>
             <a className="project-link" href={link} style={{ color: color}}>
                 {title}
             </a>

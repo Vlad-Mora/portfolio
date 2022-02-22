@@ -8,6 +8,8 @@
         width: 29rem;
         background-position: center;
         background-size: cover;
+        position: relative;
+        overflow: hidden;
         .project-link {
             height: 100%;
             color: $purple_bright_color;
@@ -18,6 +20,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        &.discontinued,
+        &.paused,
+        &.ongoing,
+        &.finished {
+            &::before {
+                content: var(--state);
+                font-family: cursive;
+                background: $purple_bright_color;
+                width: 100%;
+                height: 2.5rem;
+                line-height: 2.5rem;
+                position: absolute;
+                left: 60%;
+                top: 5%;
+                color: $white;
+                font-size: 1.6rem;
+                font-weight: bold;
+                text-align: left;
+                padding-left: 1.5rem;
+                clip-path: polygon(0% 0%, 3% 50%, 0% 100%, 100% 100%, 100% 0%);
+            }
         }
         &:hover {
             opacity: .4;
