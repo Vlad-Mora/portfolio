@@ -20,7 +20,7 @@
                     text-align: center;
                     .item-title {
                         text-shadow: 3px 3px $black;
-                        color: $red_color;
+                        color: $red_light_color;
                         position: relative;
                         top: 40%;
                     }
@@ -104,7 +104,7 @@
                 position: relative;
                 top: -1rem;
                 left: 2.5rem;
-                background: $red_color;
+                background: $red_light_color;
                 color: $white;
                 font-weight: bold;
                 width: 2rem;
