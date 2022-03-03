@@ -8,34 +8,32 @@ import ShopItem from "@atoms/ShopItem/ShopItem";
 import LoginModal from "@organisms/Modals/LoginModal/LoginModal";
 import CheckoutModal from "@organisms/Modals/CheckoutModal/CheckoutModal";
 import DisplayItemModal from "@organisms/Modals/DisplayItemModal/DisplayItemModal";
-import { ItemProps } from "@interfaces/index";
+import { TripItemProps } from "@interfaces/index";
 
 const TravelAgencyPage = () => {
 
     const { user } = React.useContext(ContextContainer) as ContextProps;
-    const { db, useReturn} = useEasybase();
-
-
+    const { db, useReturn } = useEasybase();
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1440 },
             items: 3
         },
         laptop: {
-          breakpoint: { max: 1439, min: 1024 },
-          items: 2
+            breakpoint: { max: 1439, min: 1024 },
+            items: 2
         },
         tablet: {
-          breakpoint: { max: 1023, min: 960 },
-          items: 2
+            breakpoint: { max: 1023, min: 960 },
+            items: 2
         },
         mobile: {
-          breakpoint: { max: 959, min: 0 },
-          items: 1
+            breakpoint: { max: 959, min: 0 },
+            items: 1
         }
       };
 
-    const { frame }: Record<string, any> = useReturn(() => db("EXAMPLE").return(), []);
+    const { frame }: Record<string, any> = useReturn(() => db("TA-LOCATIONS").return(), []);
 
     return (
         <>
@@ -58,7 +56,7 @@ const TravelAgencyPage = () => {
                                 removeArrowOnDeviceType={["tablet", "mobile"]}
                                 itemClass="carousel-item-padding-40-px"
                             >
-                                {frame.map((item: ItemProps) => (
+                                {frame.map((item: TripItemProps) => (
                                     <ShopItem
                                         photo={item.photo}
                                         title={item.landmark}
@@ -72,7 +70,7 @@ const TravelAgencyPage = () => {
                         <CheckoutModal/>
                     </div>
                     <div className="travelagency-content">
-                        {frame.map((item: ItemProps) => (
+                        {frame.map((item: TripItemProps) => (
                             <DisplayItemModal item={item}/>
                         ))}
                     </div>

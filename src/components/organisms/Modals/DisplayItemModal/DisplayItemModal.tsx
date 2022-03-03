@@ -1,11 +1,11 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
-import { ItemProps } from "@interfaces/index";
+import { TripItemProps } from "@interfaces/index";
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 interface DisplayItemModalProps {
-    item: ItemProps;
+    item: TripItemProps;
 }
 
 const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
@@ -15,7 +15,6 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
     const [purchased, setPurchased] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        console.log(userCart)
         if (userCart) {
             userCart?.forEach((cartItem) => {
                 if (cartItem.name !== item.landmark) {
@@ -29,18 +28,26 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
         }
     }, [userCart])
 
+    var itemPrice = item.discount && (item.price * (1 - item.discount)).toString()
+    if (itemPrice && itemPrice.toString().split(".").length > 1) {
+        if (itemPrice.toString().split(".")[1].length !== 2) {
+            itemPrice = itemPrice.toString() + "0";
+        }
+    }
+
     return (
         <Modal
             basic
             open={open}
-            size="small"
+            size="large"
             className="item-modal"
             trigger={
                 <Button
-                    className={`item-modal-trigger-button ${open && "open"}`}
-                    style={{ backgroundImage: `url(${item.photo})`}}
+                    className={`item-modal-trigger-button ${open ? "open" : ""}`}
+                    style={{ backgroundImage: `url(${item.photo})` }}
                     onClick={() => setOpen(true)}
                 >
+                    {item.discount && (<div className="discount">{item.discount * 100}% OFF</div>)}
                     <div className="item-shade"/>
                     <div className="pop-up">
                         MORE DETAILS
@@ -55,7 +62,22 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
             <Modal.Content>
                 <div className="display-item-details">
                     <span>Location: {item.landmark}</span>
-                    <span>Price: £{item.price}</span>
+                    <span className="item-price">
+                        {item.discount ? (
+                            <>
+                                New Price: £{itemPrice ?? item.price}
+                                <span className="old-price">
+                                    Old Price: £{item.price}
+                                </span>
+                            </>
+                        ) : (
+                            <>
+                                <span style={{ color: "white" }}>
+                                    Price: £{item.price}
+                                </span>
+                            </>
+                        )}
+                    </span>
                 </div>
             </Modal.Content>
             <Modal.Actions>
@@ -88,7 +110,7 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
                         userCart?.forEach((item) => array.push(item))
                         array?.push({
                             name: item.landmark,
-                            price: item.price
+                            price: itemPrice ?? item.price
                         })
                         setUserCart(array)
                         setPurchased(true)

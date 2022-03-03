@@ -1,19 +1,27 @@
 import React from "react";
 import { useEasybase } from "easybase-react";
-import { Header, Input, Modal, Icon, Button, Segment, Grid, Divider } from "semantic-ui-react";
+import { Header, Input, Modal, Icon, Button, Segment, Grid, Divider, Checkbox } from "semantic-ui-react";
 import md5 from "md5";
 
 import { TravelAgencyUserProps } from "@interfaces/index";
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
+import { getLocalCookie, setCookie } from "@helpers/cookieFunctions";
+
+interface KeepLoggedInCookie {
+    email: string;
+    password: string;
+    checked: boolean;
+}
 
 const LoginModal: React.FC = () => {
 
     const [users, setUsers] = React.useState<TravelAgencyUserProps[]>();
-    const { db } = useEasybase();
+    const { db, e } = useEasybase();
     const { setUser } = React.useContext(ContextContainer) as ContextProps;
 
-    const [email, setEmail] = React.useState<string>(""); // REMOVE
-    const [password, setPassword] = React.useState<string>(""); // REMOVE
+    const [email, setEmail] = React.useState<string>("");
+    const [password, setPassword] = React.useState<string>("");
+    const [keepLoggedIn, setKeepLoggedIn] = React.useState<boolean | undefined>(false);
 
     const [errors, setErrors] = React.useState<string[]>([]);
     const [registerName, setRegisterName] = React.useState<string>("");
@@ -22,17 +30,40 @@ const LoginModal: React.FC = () => {
     const [registerPassword, setRegisterPassword] = React.useState<string>("");
 
     const handleLogInEvent = async() => {
+        
+        if (keepLoggedIn) {
+            setCookie(
+                "keepLoggedIn",
+                {
+                    email: email,
+                    password: password,
+                    checked: keepLoggedIn
+                },
+                7
+            )
+        }
+
         await db("USERS").return().all().then((res: any) => setUsers(res));
     }
 
     React.useEffect(() => {
-        users !== undefined && users.forEach((item: TravelAgencyUserProps) => {
+        users && users.forEach((item: TravelAgencyUserProps) => {
             if (item.email === email && item.password === password) {
                 setUser(item)
                 setUsers(undefined)
             }
         })
     }, [users])
+
+    React.useEffect(() => {
+        const keepLoggedInCookie: KeepLoggedInCookie | undefined = getLocalCookie("keepLoggedIn");
+        if (keepLoggedInCookie?.checked) {
+            setEmail(keepLoggedInCookie.email)
+            setPassword(keepLoggedInCookie.password)
+            setKeepLoggedIn(keepLoggedInCookie.checked)
+            handleLogInEvent()
+        }
+    }, [])
 
     const handleRegisterEvent = async () => {
         const errorChecks: string[] = [];
@@ -58,13 +89,17 @@ const LoginModal: React.FC = () => {
         }
         
         if (errorChecks.length === 0) {
+            const defaultBalance = await db("TA-SETTINGS").where(
+                e.eq("config", "maxBalance")
+            ).return().one();
+            
             await db("USERS").insert({
                 name: registerName,
                 surname: registerSurname,
                 email: registerEmail,
                 password: registerPassword,
                 isAdmin: false,
-                balance: 100000
+                balance: Object.values(defaultBalance)[1]
             }).one().then(() => {
                 setEmail(registerEmail);
                 setPassword(registerPassword);
@@ -103,6 +138,13 @@ const LoginModal: React.FC = () => {
                                     labelPosition="left"
                                     onChange={(_, data) => setPassword(md5(data.value))}
                                     type="password"
+                                />
+                                <Checkbox
+                                    label="Keep me logged in"
+                                    checked={keepLoggedIn}
+                                    onChange={(_, data) => {
+                                        setKeepLoggedIn(data.checked)
+                                    }}
                                 />
                                 <Button
                                     className="segment-button"

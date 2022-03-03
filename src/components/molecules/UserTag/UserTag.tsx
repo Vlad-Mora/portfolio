@@ -5,6 +5,7 @@ import { ContextContainer, ContextProps } from "@context/ContextContainer";
 import SignOutModal from "@organisms/Modals/SignOutModal/SignOutModal";
 import { useEasybase } from "easybase-react";
 import MyWalletModal from "@organisms/Modals/MyWalletModal/MyWalletModal";
+import AdminModal from "@organisms/Modals/AdminModal/AdminModal";
 
 const UserTag: React.FC = () => {
 
@@ -20,8 +21,6 @@ const UserTag: React.FC = () => {
         }
     }, [frame])
 
-
-
     return (
         <div className="usertag">
             <Button
@@ -33,7 +32,15 @@ const UserTag: React.FC = () => {
                 </div>}
                 onClick={() => setIsActive(!isActive)}
             />
+            <div className="animation-bar">
+                    <div className={`item ${isActive ? "active" : ""}`}/>
+                    <div className={`item ${isActive ? "active" : ""}`}/>
+                    <div className={`item ${isActive ? "active" : ""}`}/>
+                    <div className={`item ${isActive ? "active" : ""}`}/>
+                    <div className={`item ${isActive ? "active" : ""}`}/>
+            </div>
             <div className={`usertag-dropdown ${isActive ? "active" : ""}`}>
+                <AdminModal/>
                 <MyWalletModal/>
                 <SignOutModal/>
             </div>

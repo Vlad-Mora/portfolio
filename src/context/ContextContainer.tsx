@@ -2,6 +2,7 @@ import React from "react";
 
 import { TravelAgencyUserProps, UserCartProps } from "@interfaces/index";
 import { ItemProps } from "@interfaces/items";
+import { TripItemProps } from "@interfaces/index";
 
 export interface ContextProps {
   // HackerRank
@@ -29,6 +30,14 @@ export interface ContextProps {
   userCart: UserCartProps[] | undefined;
   setUserCart: React.Dispatch<
     React.SetStateAction<UserCartProps[] | undefined>
+  >;
+  selectedRow: TripItemProps | undefined;
+  setSelectedRow: React.Dispatch<
+    React.SetStateAction<TripItemProps | undefined>
+  >;
+  data: Record<string, any> | undefined;
+  setData: React.Dispatch<
+    React.SetStateAction<Record<string, any> | undefined>
   >;
 }
 
@@ -59,6 +68,11 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   // Travel Agency
   const [user, setUser] = React.useState<TravelAgencyUserProps | undefined>();
   const [userCart, setUserCart] = React.useState<UserCartProps[] | undefined>();
+  const [selectedRow, setSelectedRow] = React.useState<
+    TripItemProps | undefined
+  >();
+  const [data, setData] = React.useState<Record<string, any> | undefined>();
+
   return (
     <ContextContainer.Provider
       value={{
@@ -84,6 +98,10 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         setUser,
         userCart,
         setUserCart,
+        selectedRow,
+        setSelectedRow,
+        data,
+        setData,
       }}
     >
       {children}

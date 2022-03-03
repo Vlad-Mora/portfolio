@@ -4,16 +4,19 @@ export interface TravelAgencyUserProps {
   email: string;
   password: string;
   balance: number;
-  isAdmin: boolean;
+  isadmin: boolean;
 }
 
-export interface ItemProps {
+export interface TripItemProps {
   landmark: string;
   photo: string;
   rating: number;
-  visited_on: string;
-  favourite: boolean;
   price: number;
+  hidden: boolean;
+  stock: number;
+  viewscount: number;
+  lastPurchased: string;
+  discount: number;
 }
 
 export interface UserCartProps {

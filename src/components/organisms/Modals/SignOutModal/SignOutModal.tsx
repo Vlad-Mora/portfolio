@@ -2,6 +2,7 @@ import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
+import { removeLocalCookie } from "@helpers/cookieFunctions";
 
 const SignOutModal: React.FC = () => {
 
@@ -37,6 +38,7 @@ const SignOutModal: React.FC = () => {
                     onClick={() => {
                         setOpen(false)
                         setUser(undefined)
+                        removeLocalCookie("keepLoggedIn")
                     }}
                     content="Sign Out"
                 />
