@@ -18,6 +18,18 @@ a {
     }
 }
 
+@keyframes fontColourFlash {
+    0% {
+        color: $white;
+    }
+    50% {
+        color: $purple_dark_color;
+    }
+    100% {
+        color: $white;
+    }
+}
+
 ::selection {
     background-color: $purple_bright_color;
     color: $white;

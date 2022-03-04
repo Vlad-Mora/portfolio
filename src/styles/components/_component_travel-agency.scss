@@ -81,23 +81,21 @@
                     position: absolute;
                     opacity: 0;
                     transition: all 1s;
+                    animation: leftToRight 2s infinite;
                     &.active {
                         opacity: 1;
                     }
-                    &:nth-child(1) {
-                        animation: leftToRight 2s infinite;   
-                    }
                     &:nth-child(2) {
-                        animation: leftToRight 1.8s infinite;   
+                        animation-delay: .2s;
                     }
                     &:nth-child(3) {
-                        animation: leftToRight 1.6s infinite;   
+                        animation-delay: .4s;
                     }
                     &:nth-child(4) {
-                        animation: leftToRight 1.4s infinite;   
+                        animation-delay: .6s;
                     }
                     &:nth-child(5) {
-                        animation: leftToRight 1.2s infinite;   
+                        animation-delay: .9s; 
                     }
                 }
             }
@@ -159,13 +157,39 @@
 
 // LOGIN MODAL
 .user-main-modal {
-    .column {
-        display: flex !important;
-        height: 100% !important;
-        align-items: center;
-        .input {
-            min-width: 20rem;
-            margin-bottom: .4rem;
+    .content {
+        .segment {
+            font-family: cursive;
+            background: linear-gradient(110deg, $purple_bright_color 30%, $purple_dark_color 50%);
+            .icon {
+                color: $white;
+            }
+            .column {
+                display: flex !important;
+                height: 100% !important;
+                align-items: center;
+                .checkbox {
+                    label {
+                        font-weight: bolder;
+                        color: $white;
+                        margin: .5rem 0;
+                    }
+                    &.checked {
+                        label {
+                            animation: fontColourFlash 1s;
+                        }
+                    }
+                }
+                .input {
+                    min-width: 20rem;
+                    margin-bottom: .4rem;
+                }
+                .button {
+                    margin-top: .5rem;
+                    color: $white;
+                    background-color: $secondary_bg_color;
+                }
+            }
         }
     }
 }

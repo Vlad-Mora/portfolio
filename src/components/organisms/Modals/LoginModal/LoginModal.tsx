@@ -1,6 +1,6 @@
 import React from "react";
 import { useEasybase } from "easybase-react";
-import { Header, Input, Modal, Icon, Button, Segment, Grid, Divider, Checkbox } from "semantic-ui-react";
+import { Header, Input, Modal, Icon, Button, Segment, Grid, Checkbox } from "semantic-ui-react";
 import md5 from "md5";
 
 import { TravelAgencyUserProps } from "@interfaces/index";
@@ -120,8 +120,7 @@ const LoginModal: React.FC = () => {
         >
             <Modal.Content>
                 <Segment placeholder>
-                    <Grid columns={2} stackable textAlign="center">
-                        <Divider vertical>Or</Divider>
+                    <Grid columns={2}  textAlign="center">
                         <Grid.Row verticalAlign="middle">
                             <Grid.Column className="signin-column">
                                 <Header icon className="segment-header">
@@ -129,18 +128,19 @@ const LoginModal: React.FC = () => {
                                     Log in
                                 </Header>
                                 <Input
-                                    label="Email:"
+                                    label="Email"
                                     labelPosition="left"
                                     onChange={(_, data) => setEmail(data.value)}
                                 />
                                 <Input
-                                    label="Password:"
+                                    label="Password"
                                     labelPosition="left"
                                     onChange={(_, data) => setPassword(md5(data.value))}
                                     type="password"
                                 />
                                 <Checkbox
                                     label="Keep me logged in"
+                                    className={`${keepLoggedIn ? "checked" : ""}`}
                                     checked={keepLoggedIn}
                                     onChange={(_, data) => {
                                         setKeepLoggedIn(data.checked)
