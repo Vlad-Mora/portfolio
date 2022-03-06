@@ -1,7 +1,10 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
-import { TripItemProps } from "@interfaces/index";
+import ItemSlot from "@atoms/ItemSlot";
+
+import { TripItemProps } from "@interfaces/TravelAgency";
+
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 interface DisplayItemModalProps {
@@ -42,17 +45,18 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
             size="large"
             className="item-modal"
             trigger={
-                <Button
+                <ItemSlot
                     className={`item-modal-trigger-button ${open ? "open" : ""}`}
-                    style={{ backgroundImage: `url(${item.photo})` }}
+                    image={item.photo}
+                    label={item.discount ? `${item.discount * 100}% OFF` : ""}
+                    labelColour={item.discount ? "#b64240" : ""}
                     onClick={() => setOpen(true)}
                 >
-                    {item.discount && (<div className="discount">{item.discount * 100}% OFF</div>)}
                     <div className="item-shade"/>
                     <div className="pop-up">
                         MORE DETAILS
                     </div>
-                </Button>
+                </ItemSlot>
             }
         >
             <Header icon>

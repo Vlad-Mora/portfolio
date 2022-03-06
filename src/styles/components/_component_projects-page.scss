@@ -3,28 +3,16 @@
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fill, 29rem);
     justify-content: center;
-    .project-slot {
-        height: 15rem;
-        width: 29rem;
-        background-position: center;
-        background-size: cover;
-        position: relative;
-        overflow: hidden;
-        .project-link {
-            height: 100%;
-            color: $purple_bright_color;
-            text-shadow: 3px 3px $white;
-            text-decoration: none;
-            font-weight: bolder;
-            font-size: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        &:hover {
-            opacity: .4;
-            translate: (-50%,-50%) scale(1);
-            transition: translate .15s ease-in-out;
-        }
+    padding: 1rem;
+    .item-link {
+        height: 100%;
+        color: $purple_bright_color;
+        text-shadow: 3px 3px $white;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

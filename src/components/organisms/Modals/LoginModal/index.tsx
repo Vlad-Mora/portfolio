@@ -3,7 +3,8 @@ import { useEasybase } from "easybase-react";
 import { Header, Input, Modal, Icon, Button, Segment, Grid, Checkbox } from "semantic-ui-react";
 import md5 from "md5";
 
-import { TravelAgencyUserProps } from "@interfaces/index";
+import { UserProps } from "@interfaces/TravelAgency";
+
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 import { getLocalCookie, setCookie } from "@helpers/cookieFunctions";
 
@@ -15,10 +16,10 @@ interface KeepLoggedInCookie {
 
 const LoginModal: React.FC = () => {
 
-    const [users, setUsers] = React.useState<TravelAgencyUserProps[]>();
-    const { db, e } = useEasybase();
     const { setUser } = React.useContext(ContextContainer) as ContextProps;
+    const { db, e } = useEasybase();
 
+    const [users, setUsers] = React.useState<UserProps[]>();
     const [email, setEmail] = React.useState<string>("");
     const [password, setPassword] = React.useState<string>("");
     const [keepLoggedIn, setKeepLoggedIn] = React.useState<boolean | undefined>(false);
@@ -28,9 +29,27 @@ const LoginModal: React.FC = () => {
     const [registerSurname, setRegisterSurname] = React.useState<string>("");
     const [registerEmail, setRegisterEmail] = React.useState<string>("");
     const [registerPassword, setRegisterPassword] = React.useState<string>("");
+    
+    React.useEffect(() => {
+        users && users.forEach((item: UserProps) => {
+            if (item.email === email && item.password === password) {
+                setUser(item)
+                setUsers(undefined)
+            }
+        })
+    }, [users]);
 
-    const handleLogInEvent = async() => {
-        
+    React.useEffect(() => {
+        const keepLoggedInCookie: KeepLoggedInCookie | undefined = getLocalCookie("keepLoggedIn");
+        if (keepLoggedInCookie?.checked) {
+            setEmail(keepLoggedInCookie.email)
+            setPassword(keepLoggedInCookie.password)
+            setKeepLoggedIn(keepLoggedInCookie.checked)
+            handleLogInEvent()
+        }
+    }, []);
+
+    async function handleLogInEvent() {
         if (keepLoggedIn) {
             setCookie(
                 "keepLoggedIn",
@@ -46,26 +65,8 @@ const LoginModal: React.FC = () => {
         await db("USERS").return().all().then((res: any) => setUsers(res));
     }
 
-    React.useEffect(() => {
-        users && users.forEach((item: TravelAgencyUserProps) => {
-            if (item.email === email && item.password === password) {
-                setUser(item)
-                setUsers(undefined)
-            }
-        })
-    }, [users])
 
-    React.useEffect(() => {
-        const keepLoggedInCookie: KeepLoggedInCookie | undefined = getLocalCookie("keepLoggedIn");
-        if (keepLoggedInCookie?.checked) {
-            setEmail(keepLoggedInCookie.email)
-            setPassword(keepLoggedInCookie.password)
-            setKeepLoggedIn(keepLoggedInCookie.checked)
-            handleLogInEvent()
-        }
-    }, [])
-
-    const handleRegisterEvent = async () => {
+    async function handleRegisterEvent() {
         const errorChecks: string[] = [];
         // Name
         if (!/^[A-Za-z\s]*$/.test(registerName) || registerName.length === 0) {

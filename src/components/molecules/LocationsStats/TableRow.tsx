@@ -1,7 +1,8 @@
 import React from "react";
 import { Header, Table, Image } from "semantic-ui-react";
 
-import { TripItemProps } from "@interfaces/index";
+import { TripItemProps } from "@interfaces/TravelAgency";
+
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 interface TableRowProps {
@@ -11,10 +12,11 @@ interface TableRowProps {
 const TableRow: React.FC<TableRowProps> = ({ data }) => {
 
     const { selectedRow, setSelectedRow } = React.useContext(ContextContainer) as ContextProps;
+    
     const isRowSelected = selectedRow?.landmark === data.landmark ? "selected" : "";
     const isOutOfStock = data.stock === 0 ? "out-of-stock" : "";
     const isDisabled = data.hidden ? "hidden" : "";
-
+    
     return (
         <Table.Row
             className={`table-row ${isRowSelected} ${isOutOfStock} ${isDisabled}`}

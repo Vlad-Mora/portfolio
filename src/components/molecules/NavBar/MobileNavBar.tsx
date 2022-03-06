@@ -1,9 +1,9 @@
 import React, { CSSProperties } from "react";
+import { Button } from "semantic-ui-react";
 import { useRouter } from "next/router";
 
-import FooterItem from "@atoms/FooterItem/FooterItem";
-import NavItem from "@atoms/NavItem/NavItem";
-import Button from "@atoms/Button/Button";
+import FooterItem from "@atoms/FooterItem";
+import NavItem from "@atoms/NavItem";
 
 const MobileNavBar: React.FC = () => {
 
@@ -29,16 +29,16 @@ const MobileNavBar: React.FC = () => {
                     <div className="slide-content">
                         <div className="navbar-items">
                             <NavItem
-                                title="home"
+                                title="Home"
                                 link="/"
                             />
                             <NavItem
-                                title="projects"
+                                title="Projects"
                                 link="/projects"
                             />
                             <NavItem
-                                title="contact"
-                                link="/contact"
+                                title="Contact"
+                                link="/ontact"
                             />
                         </div>
                         <div className="social-media" style={{ "--social-count": 2} as CSSProperties}>

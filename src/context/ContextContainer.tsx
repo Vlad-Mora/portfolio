@@ -1,16 +1,14 @@
 import React from "react";
 
-import { TravelAgencyUserProps, UserCartProps } from "@interfaces/index";
-import { ItemProps } from "@interfaces/items";
-import { TripItemProps } from "@interfaces/index";
+import { UserProps, UserCartProps } from "@interfaces/TravelAgency";
+import { ItemProps } from "@interfaces/VendingMachine";
+import { TripItemProps } from "@interfaces/TravelAgency";
 
 export interface ContextProps {
-  // HackerRank
-  pageNumber: number;
-  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
   // Spotify Clone
   spotifyLoggedIn: boolean;
   setSpotifyLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+
   // Vending Machine
   currentBalance: number;
   setCurrentBalance: React.Dispatch<React.SetStateAction<number>>;
@@ -22,11 +20,10 @@ export interface ContextProps {
   setSelectedItems: React.Dispatch<React.SetStateAction<string[]>>;
   items: ItemProps[];
   setItems: React.Dispatch<React.SetStateAction<ItemProps[]>>;
+
   // Travel Agency
-  user: TravelAgencyUserProps | undefined;
-  setUser: React.Dispatch<
-    React.SetStateAction<TravelAgencyUserProps | undefined>
-  >;
+  user: UserProps | undefined;
+  setUser: React.Dispatch<React.SetStateAction<UserProps | undefined>>;
   userCart: UserCartProps[] | undefined;
   setUserCart: React.Dispatch<
     React.SetStateAction<UserCartProps[] | undefined>
@@ -44,10 +41,9 @@ export interface ContextProps {
 export const ContextContainer = React.createContext<ContextProps | null>(null);
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
-  // HackerRank
-  const [pageNumber, setPageNumber] = React.useState<number>(0);
   // Spotify Clone
   const [spotifyLoggedIn, setSpotifyLoggedIn] = React.useState<boolean>(false);
+
   // Vending Machine
   const itemsCount = 30;
   const tempArray: ItemProps[] = [];
@@ -65,8 +61,9 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [insertAmount, setInsertAmount] = React.useState<string>("0");
   const [totalCost, setTotalCost] = React.useState<number>(0);
   const [currentBalance, setCurrentBalance] = React.useState<number>(0);
+
   // Travel Agency
-  const [user, setUser] = React.useState<TravelAgencyUserProps | undefined>();
+  const [user, setUser] = React.useState<UserProps | undefined>();
   const [userCart, setUserCart] = React.useState<UserCartProps[] | undefined>();
   const [selectedRow, setSelectedRow] = React.useState<
     TripItemProps | undefined
@@ -76,12 +73,10 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   return (
     <ContextContainer.Provider
       value={{
-        // HackerRank
-        pageNumber,
-        setPageNumber,
         // Spotify Clone
         spotifyLoggedIn,
         setSpotifyLoggedIn,
+
         // Vending Machine
         currentBalance,
         setCurrentBalance,
@@ -93,6 +88,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         setSelectedItems,
         totalCost,
         setTotalCost,
+
         // Travel Agency
         user,
         setUser,

@@ -1,17 +1,18 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
-import { ContextContainer, ContextProps } from "@context/ContextContainer";
 import LocationsStats from "@molecules/LocationsStats/LocationsStats";
+
+import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const CheckoutModal: React.FC = () => {
 
     const { user } = React.useContext(ContextContainer) as ContextProps;
+
     const [open, setOpen] = React.useState<boolean>(false);
     
     return (
         <Modal
-            // basic
             className="admin-modal"
             open={open}
             size="large"

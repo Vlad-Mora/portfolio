@@ -1,6 +1,7 @@
 // MAIN VIEW
 .travelagency {
     height: 100%;
+    padding: 1rem;
     .travelagency-navbar {
         display: grid;
         grid-template-columns: repeat(2, 50%);
@@ -261,8 +262,6 @@
     padding: .5rem 0;
     .item-modal-trigger-button {
         background-position: center !important;
-        height: 20rem;
-        width: 29rem;
         overflow: hidden;
         transition: all .3s;
         padding: 0;
@@ -282,6 +281,7 @@
             color: $white;
             font-weight: bold;
             font-size: 2rem;
+            text-align: center;
             z-index: 2;
             position: sticky;
             bottom: 45%;
@@ -293,26 +293,8 @@
             overflow: hidden;
             transition: all .2s;
         }
-        .discount {
-            position: absolute;
-            top: 10%;
-            left: 65%;
-            background-color: $red_light_color;
-            color: $white;
-            font-weight: bold;
-            font-size: 1.6rem;
-            font-family: cursive;
-            text-align: left;
-            padding-left: 1.5rem;
-            width: 100%;
-            height: 2.5rem;
-            line-height: 2.5rem;
-            clip-path: polygon(0% 0%, 3% 50%, 0% 100%, 100% 100%, 100% 0%);
-        }
         &:hover,
         &.open {
-            transform: scale(1.1);
-            z-index: 1;
             .item-shade {
                 height: 100%;
             }

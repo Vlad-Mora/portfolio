@@ -1,67 +1,62 @@
 .mobile-navbar {
     display: none;
 }
-
 .navbar {
-    z-index: 2;
-    top: 0;
+    z-index: 3;
     height: 5rem;
     background: $grey_color;
     display: flex;
     align-items: center;
     padding: .2rem 1rem;
     color: $white;
+    overflow: hidden;
     .navbar-icon {
-        display: grid;
-        grid-template-columns: 4.5rem 1fr;
+        display: flex;
         align-items: center;
-        font-family: IndieFlower, cursive;
+        font-family: cursive;
         font-weight: bold;
         font-size: 1.5rem;
-        width: 13rem;
-        position: fixed;
-        left: 1rem;
+        width: fit-content;
         cursor: pointer;
+        position: relative;
         .header-name {
-            position: relative;
-            top: -15%;
+            position: absolute;
+            top: calc((-100% + 6rem) / 2);
+            left: 5rem;
             .split-text {
                 position: relative;
-                top: 1.4rem;
+                top: 1.5rem;
                 left: -30%;
             }
         }
-        img {
+        .icon {
             width: 4.5rem;
+            height: 4.5rem;
         }
     }
     .navbar-items {
         display: flex;
-        align-items: center;
-        position: fixed;
-        top: 3rem;
-        left: 17rem;
+        position: relative;
+        top: calc(100% - 3.2rem); // 3rem - height of each item | .2rem - padding-top of parent
+        left: 10rem;
         text-align: center;
-        overflow: hidden;
+        height: 2rem;
+        width: fit-content;
         .navbar-item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            line-height: 2rem;
             background: $purple_bright_color;
-            text-transform: capitalize;
+            color: $white;
             font-weight: bolder;
             font-size: 1.2rem;
-            color: $white;
             width: 8rem;
-            height: 2rem;
-            padding: .5rem;
-            margin-right: .2rem;
+            height: 100%;
+            margin-right: .4rem;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
             &.active {
                 border: 3px solid $purple_bright_color;
                 border-bottom: none;
-                background: $grey_color;
+                background: transparent;
                 color: $white;
             }
             &:hover {
@@ -69,24 +64,20 @@
             }
         }
     }
-
     .social-media {
         display: grid;
         grid-template-columns: repeat(var(--social-count), 1fr);
         justify-content: center;
         align-items: center;
-        position: fixed;
+        position: absolute;
         right: 1rem;
         .footer-item {
-            margin: .5rem;
+            margin-right: .5rem;
             svg {
                 width: 2rem;
                 height: 2rem;
             }
         }
-    }
-    &.hidden {
-        display: none;
     }
 }
 
@@ -95,39 +86,33 @@
         display: none;
     }
     .mobile-navbar {
-        z-index: 2;
-        top: 0;
         width: 100%;
         height: 5rem;
         background: $grey_color;
         display: flex;
-        align-items: left;
-        justify-content: center;
         padding: .2rem 1rem;
         color: $white;
         .navbar-icon {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            align-items: center;
-            font-family: IndieFlower, cursive;
+            display: flex;
+            font-family: cursive;
             font-weight: bold;
             font-size: 1.5rem;
-            width: 13rem;
-            user-select: none;
-            img {
-                margin-left: auto;
-            }
+            width: fit-content;
+            cursor: pointer;
+            position: relative;
             .header-name {
-                position: relative;
-                top: -15%;
+                position: absolute;
+                top: calc((-100% + 6rem) / 2);
+                left: 5rem;
                 .split-text {
                     position: relative;
-                    top: 1.4rem;
+                    top: 1.5rem;
                     left: -30%;
                 }
             }
-            img {
+            .icon {
                 width: 4.5rem;
+                height: 4.5rem;
             }
         }
     }
@@ -166,47 +151,49 @@
             background: $secondary_bg_color !important;
             color: $white !important;
             .icon {
+                color: $white;
+                opacity: 1;
                 transition: transform 1s !important;
-                transform: rotateX(0deg);
             }
         }
         .slide-content {
-            padding: .5rem 1rem;
+            padding: 1rem 1rem;
             height: 100%;
-            .social-media {
-                display: grid;
-                grid-template-columns: repeat(var(--social-count), 1fr);
-                width: calc(100% - 2rem);
-                position: fixed;
-                bottom: 5%;
-                .footer-item {
-                    margin: auto;
-                    .link-icon {
-                        transform: scale(1.5);
-                        width: 1rem;
-                    }
-                }
-            }
             .navbar-items {
                 display: grid;
                 grid-template-rows: repeat(3, 1fr);
-                row-gap: .4rem;
+                row-gap: .7rem;
                 .navbar-item {
-                    a {
-                        background: transparent;
-                        color: $white;
-                        text-transform: capitalize;
-                        padding: .5rem .3rem !important;
-                    }
+                    background: transparent;
+                    color: $white;
+                    font-weight: bold;
+                    padding: .2rem !important;
+                    border-bottom: 2px $purple_bright_color solid;
                 }
             }
         }
-
+        .social-media {
+            display: grid;
+            grid-template-columns: repeat(var(--social-count), 1fr);
+            width: calc(100% - 2rem);
+            position: fixed;
+            bottom: 5%;
+            .footer-item {
+                margin: auto;
+                .link-icon {
+                    transform: scale(1.5);
+                    width: 1rem;
+                }
+            }
+        }
         &.open {
             transform: translateZ(0);
             .slide-button {
                 .icon {
                     transform: rotateZ(180deg);
+                    position: relative;
+                    top: .1rem;
+                    left: .1rem;
                 }
             }
         }

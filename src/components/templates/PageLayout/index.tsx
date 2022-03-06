@@ -1,6 +1,8 @@
 import React from "react";
+import { useRouter } from "next/router";
+
 import NavBar from "@molecules/NavBar/NavBar";
-import Footer from "@molecules/Footer/Footer";
+import Footer from "@molecules/Footer";
 import MobileNavBar from "@molecules/NavBar/MobileNavBar";
 
 interface IPageLayouProperties {
@@ -9,10 +11,18 @@ interface IPageLayouProperties {
 
 const PageLayout: React.FC<IPageLayouProperties> = ({ children }) => {
 
+    const router = useRouter();
+    const currentPage = router.route;
+    const isPageCV = currentPage.includes("cv") ?? false;
+    
     return (
         <>
-            <NavBar/>
-            <MobileNavBar/>
+            {!isPageCV && 
+                <>
+                    <NavBar/>
+                    <MobileNavBar/>
+                </>
+            }
             {children}
             <Footer/>
         </>

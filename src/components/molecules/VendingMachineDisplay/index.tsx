@@ -1,6 +1,7 @@
 import React from "react";
 
-import DisplayItem from "@atoms/DisplayItem/DisplayItem";
+import DisplayItem from "@atoms/DisplayItem";
+
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const VendingMachineDisplay: React.FC = () => {

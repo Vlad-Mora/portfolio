@@ -1,9 +1,9 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 import { Tooltip } from "react-tippy";
+import { useEasybase } from "easybase-react";
 
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
-import { useEasybase } from "easybase-react";
 
 const CheckoutModal: React.FC = () => {
 
@@ -13,8 +13,9 @@ const CheckoutModal: React.FC = () => {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
     const [paymentState, setPaymentState] = React.useState<string>("");
     const [totalPrice, setTotalPrice] = React.useState<number | undefined>(0);
+    
     const { db, e } = useEasybase();
-
+    
     async function updateUserBalance(newBalance: number) {
         await db("USERS").where(
             e.and(

@@ -1,0 +1,14 @@
+.item-slot {
+    height: 15rem;
+    width: 29rem;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    transition: all .2s;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+        z-index: 1;
+    }
+}

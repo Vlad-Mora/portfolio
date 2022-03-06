@@ -1,8 +1,10 @@
+// Atoms
+@import "./atoms/atom_item-slot";
+@import "./atoms/atom_label";
+
 // Components
 @import "./components/component_navbar";
-@import "./components/component_content";
 @import "./components/component_footer";
-@import "./components/component_pager";
 @import "./components/component_projects-page";
 @import "./components/component_vending-machine";
 @import "./components/component_travel-agency";
@@ -15,3 +17,4 @@
 
 // Parts
 @import "./parts/parts_common";
+@import "./parts/parts_animations";

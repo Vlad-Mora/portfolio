@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 
-import { IProfilePictureProps } from "@interfaces/requests";
+import { IProfilePictureProps } from "@interfaces/Spotify";
 
 interface ISpotifyNavBarProps {
     name: string | undefined;

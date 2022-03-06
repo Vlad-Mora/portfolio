@@ -3,20 +3,21 @@ import { Button, Table } from "semantic-ui-react";
 import { useEasybase } from "easybase-react";
 var _ = require("lodash");
 
-import { TripItemProps } from "@interfaces/index";
 import TableRow from "./TableRow";
+
+import { TripItemProps } from "@interfaces/TravelAgency";
+
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const LocationsStats: React.FC = () => {
     
-    const { db, e, useReturn } = useEasybase();
-    const { frame }: Record<string, any> = useReturn(() => db("TA-LOCATIONS").return(), []);
     const { selectedRow, setSelectedRow } = React.useContext(ContextContainer) as ContextProps;
-    
     const [data, setData] = React.useState<Record<string, any>>();
-
     const [sortDirection, setSortDirection] = React.useState<"descending" | "ascending">("descending");
     const [selectedColumn, setSelectedColumn] = React.useState<string>("rating");
+    
+    const { db, e, useReturn } = useEasybase();
+    const { frame }: Record<string, any> = useReturn(() => db("TA-LOCATIONS").return(), []);
     
     React.useEffect(() => {
         const newData = _.sortBy(frame, selectedColumn)
@@ -44,7 +45,6 @@ const LocationsStats: React.FC = () => {
             e.eq("landmark", selectedRow?.landmark!)
         ).set({ hidden: state }).one().then((_) => setSelectedRow(undefined));
     }
-
     async function handleDiscountEvent(discount: number | null) {
         await db("TA-LOCATIONS").where(
             e.eq("landmark", selectedRow?.landmark!)

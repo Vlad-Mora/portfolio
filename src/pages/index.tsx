@@ -1,7 +1,7 @@
 import React from "react";
 
 const IndexPage = () => {
-  return <div className="content"></div>;
+  return <div></div>;
 };
 
 export default IndexPage;

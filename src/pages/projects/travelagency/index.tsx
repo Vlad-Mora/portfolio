@@ -1,19 +1,24 @@
 import React from "react";
-
-import { useEasybase } from 'easybase-react';
-import UserTag from "@molecules/UserTag/UserTag";
-import { ContextContainer, ContextProps } from "@context/ContextContainer";
 import Carousel from "react-multi-carousel";
-import ShopItem from "@atoms/ShopItem/ShopItem";
-import LoginModal from "@organisms/Modals/LoginModal/LoginModal";
-import CheckoutModal from "@organisms/Modals/CheckoutModal/CheckoutModal";
-import DisplayItemModal from "@organisms/Modals/DisplayItemModal/DisplayItemModal";
-import { TripItemProps } from "@interfaces/index";
+import { useEasybase } from 'easybase-react';
+
+import ShopItem from "@atoms/ShopItem";
+
+import UserTag from "@molecules/UserTag";
+
+import LoginModal from "@organisms/Modals/LoginModal";
+import CheckoutModal from "@organisms/Modals/CheckoutModal";
+import DisplayItemModal from "@organisms/Modals/DisplayItemModal";
+
+import { TripItemProps } from "@interfaces/TravelAgency";
+
+import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const TravelAgencyPage = () => {
 
     const { user } = React.useContext(ContextContainer) as ContextProps;
     const { db, useReturn } = useEasybase();
+    
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1440 },

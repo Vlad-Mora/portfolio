@@ -1,4 +1,4 @@
-export interface TravelAgencyUserProps {
+export interface UserProps {
   name: string;
   surname: string;
   email: string;

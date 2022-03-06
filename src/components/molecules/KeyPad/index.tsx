@@ -1,8 +1,9 @@
 import React from "react";
+import { Button } from "semantic-ui-react";
 
-import Button from "@atoms/Button/Button";
+import KeypadDisplay from "@molecules/KeypadDisplay";
+
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
-import KeypadDisplay from "@molecules/KeypadDisplay/KeypadDisplay";
 
 const KeyPad: React.FC = () => {
 
@@ -15,7 +16,7 @@ const KeyPad: React.FC = () => {
             keyButtons.push(
                 <Button
                     className="key"
-                    text={key}
+                    content={key}
                     onClick={() => {
                         if (insertAmount === "0.00") {
                             setInsertAmount("" + key)
@@ -26,10 +27,9 @@ const KeyPad: React.FC = () => {
                     disabled={insertAmount.includes(".") ? insertAmount.split(".")[1].length >= 2 : false}
                 />
             )
-        })
-        return (
-            keyButtons
-        );
+        });
+
+        return keyButtons;
     }
 
     return (
@@ -45,7 +45,7 @@ const KeyPad: React.FC = () => {
                 />
             </div>
             <Button
-                text="confirm"
+                content="confirm"
                 className="keypad-confirm-button"
                 icon="checkmark"
                 onClick={() => {
@@ -55,7 +55,7 @@ const KeyPad: React.FC = () => {
                 disabled={parseFloat(insertAmount) <= 0}
             />
             <Button
-                text="purchase"
+                content="purchase"
                 className="keypad-purchase-button"
                 icon="shop"
                 onClick={() => {

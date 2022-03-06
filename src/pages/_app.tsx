@@ -2,12 +2,12 @@ import React from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { EasybaseProvider } from "easybase-react";
+
 import ebconfig from "../ebconfig.js";
 
-import { ContextProvider } from "@context/ContextContainer";
+import PageLayout from "@templates/PageLayout";
 
-import PageLayout from "@templates/PageLayout/PageLayout";
-import { useRouter } from "next/router";
+import { ContextProvider } from "@context/ContextContainer";
 
 import "react-tippy/dist/tippy.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
@@ -18,10 +18,6 @@ import "react-multi-carousel/lib/styles.css";
 interface IAppProps extends AppProps {}
 
 function App({ Component, pageProps }: IAppProps) {
-  const router = useRouter();
-  const currentPage = router.route;
-  const isPageCV = currentPage.includes("cv") ? "full-size" : "";
-
   return (
     <>
       <EasybaseProvider ebconfig={ebconfig}>
@@ -44,7 +40,7 @@ function App({ Component, pageProps }: IAppProps) {
         </Head>
         <ContextProvider>
           <PageLayout>
-            <div className={`app_pagelayout ${isPageCV}`}>
+            <div className="app_pagelayout">
               <Component {...pageProps} />
             </div>
           </PageLayout>

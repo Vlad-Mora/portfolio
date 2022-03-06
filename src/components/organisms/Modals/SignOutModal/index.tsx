@@ -7,6 +7,7 @@ import { removeLocalCookie } from "@helpers/cookieFunctions";
 const SignOutModal: React.FC = () => {
 
     const { setUser } = React.useContext(ContextContainer) as ContextProps;
+    
     const [open, setOpen] = React.useState<boolean>(false);
 
     return (

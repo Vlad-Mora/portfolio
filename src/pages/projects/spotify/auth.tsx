@@ -3,14 +3,13 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import queryString from "query-string";
 
+import { IAccessTokenDataProps } from "@interfaces/Spotify";
+
 import { setCookie } from "@helpers/cookieFunctions";
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
-import { IAccessTokenDataProps } from "@interfaces/requests";
 
 const AuthPage = () => {
-  const { setSpotifyLoggedIn } = React.useContext(
-    ContextContainer
-  ) as ContextProps;
+  const { setSpotifyLoggedIn } = React.useContext(ContextContainer) as ContextProps;
   const router = useRouter();
 
   React.useEffect(() => {

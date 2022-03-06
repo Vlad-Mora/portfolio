@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "semantic-ui-react";
 
-import Category from "@atoms/Category/Category";
+import Category from "@atoms/Category";
 
 const CVPage = () => {
   return (
@@ -15,7 +15,11 @@ const CVPage = () => {
             <span>Phone No.: +44 793 467 0614</span>
             <span>Email: vlad.mora.work@gmail.com</span>
           </div>
-          <a className="portofolio" href="https://github.com/Vlad-Mora/Python">
+          <a
+            className="portofolio"
+            target="_blank"
+            href="https://vlad-mora-portofolio.herokuapp.com/"
+          >
             <u>My portofolio</u>
           </a>
         </div>

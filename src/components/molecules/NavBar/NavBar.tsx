@@ -1,32 +1,30 @@
 import React, { CSSProperties } from "react";
 import { useRouter } from "next/router";
 
-import FooterItem from "@atoms/FooterItem/FooterItem";
-import NavItem from "@atoms/NavItem/NavItem";
+import FooterItem from "@atoms/FooterItem";
+import NavItem from "@atoms/NavItem";
 
 const NavBar: React.FC = () => {
 
     const router = useRouter();
-    const currentPage = router.route;
-    const isPageCV = currentPage.includes("cv") ? "hidden" : "";
     
     return (
-        <div className={`navbar noselect ${isPageCV}`}>
+        <div className="navbar noselect">
             <div className="navbar-icon" onClick={() => router.push("/")}>
-                <img src="assets/images/banner.png"/>
+                <img className="icon" src="assets/images/banner.png"/>
                 <div className="header-name">Swift<span className="split-text">Crate</span></div>
             </div>
             <div className="navbar-items">
                 <NavItem
-                    title="home"
+                    title="Home"
                     link="/"
                 />
                 <NavItem
-                    title="projects"
+                    title="Projects"
                     link="/projects"
                 />
                 <NavItem
-                    title="contact"
+                    title="Contact"
                     link="/contact"
                 />
             </div>

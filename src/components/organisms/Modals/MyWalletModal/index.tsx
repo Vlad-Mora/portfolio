@@ -6,8 +6,9 @@ import { useEasybase } from "easybase-react";
 
 const MyWalletModal: React.FC = () => {
 
-    const { db, e } = useEasybase();
     const { user } = React.useContext(ContextContainer) as ContextProps;
+    const { db, e } = useEasybase();
+    
     const [open, setOpen] = React.useState<boolean>(false);
     const [isFundsModalOpen, setIsFundsModalOpen] = React.useState<boolean>(false);
     const [isMaxFundsModalOpen, setIsMaxFundsModalOpen] = React.useState<boolean>(false);
@@ -90,7 +91,7 @@ const MyWalletModal: React.FC = () => {
                     disabled={user?.balance! >= configBalance}
                     className="addfunds-button" 
                     content="Add funds"
-                    color="green" 
+                    color="green"
                     inverted 
                     onClick={() => {
                         updateUserBalance()
