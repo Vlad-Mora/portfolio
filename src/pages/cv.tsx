@@ -18,7 +18,7 @@ const CVPage = () => {
           <a
             className="portofolio"
             target="_blank"
-            href="https://vlad-mora-portofolio.herokuapp.com/"
+            href="https://vm-portfolio.herokuapp.com/"
           >
             <u>My portofolio</u>
           </a>
