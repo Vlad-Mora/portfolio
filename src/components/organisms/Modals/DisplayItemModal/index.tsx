@@ -31,7 +31,7 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
         }
     }, [userCart])
 
-    var itemPrice = item.discount && (item.price * (1 - item.discount)).toString()
+    var itemPrice = item.discount && (item.price * (1 - (item.discount / 100))).toString();
     if (itemPrice && itemPrice.toString().split(".").length > 1) {
         if (itemPrice.toString().split(".")[1].length !== 2) {
             itemPrice = itemPrice.toString() + "0";
@@ -48,7 +48,7 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
                 <ItemSlot
                     className={`item-modal-trigger-button ${open ? "open" : ""}`}
                     image={item.photo}
-                    label={item.discount ? `${item.discount * 100}% OFF` : ""}
+                    label={item.discount ? `${item.discount}% OFF` : ""}
                     labelColour={item.discount ? "#b64240" : ""}
                     onClick={() => setOpen(true)}
                 >

@@ -57,6 +57,13 @@ const LocationsStats: React.FC = () => {
                 <Table.Row>
                     <Table.HeaderCell>Location</Table.HeaderCell>
                     <Table.HeaderCell
+                        content="Discount"
+                        sorted={selectedColumn === "discount" ? sortDirection : undefined}
+                        onClick={() => {
+                            handleColumnClickEvent("discount")
+                        }}
+                    />
+                    <Table.HeaderCell
                         content="Rating"
                         sorted={selectedColumn === "rating" ? sortDirection : undefined}
                         onClick={() => {
@@ -107,9 +114,9 @@ const LocationsStats: React.FC = () => {
                     />
                 ))}
             </Table.Body>
-            <Table.Footer className="table-footer" fullWidth>
+            <Table.Footer className="table-footer">
                 <Table.Row>
-                    <Table.HeaderCell colspan={7}>
+                    <Table.HeaderCell colspan={8}>
                         <Button
                             inverted={selectedRow !== undefined}
                             content={selectedRow ? (selectedRow?.hidden ? "Show" : "Hide") : "Select an item"}
@@ -122,15 +129,16 @@ const LocationsStats: React.FC = () => {
                         />
                         <Button
                             inverted={selectedRow !== undefined}
-                            content={selectedRow ? (selectedRow.discount === null ? "Make offer" : `Change offer (${selectedRow?.discount}%)`) : "Select an item"}
+                            content={selectedRow ? (selectedRow.discount === null ? "Make offer" : `Change offer (current offer: ${selectedRow?.discount}%)`) : "Select an item"}
                             color={selectedRow ? "violet" : "grey"}
                             disabled={selectedRow === undefined}
                             onClick={() => {
                                 var discount = prompt("Enter discount (enter 'remove' to remove offer):")
+                                if (discount === "remove") {
+                                    handleDiscountEvent(null)
+                                }
                                 if (discount && parseInt(discount) > 0) {
                                     handleDiscountEvent(parseInt(discount))
-                                } else if (discount === "remove") {
-                                    handleDiscountEvent(null)
                                 }
                             }}
                         />

@@ -36,6 +36,7 @@ const TableRow: React.FC<TableRowProps> = ({ data }) => {
                     </Header.Content>
                 </Header>
             </Table.Cell>
+            <Table.Cell>{data.discount ? `${data.discount}%` : "None"}</Table.Cell>
             <Table.Cell>{data.rating}</Table.Cell>
             <Table.Cell>{data.price}</Table.Cell>
             <Table.Cell>{data.hidden ? "Hidden" : "Shown"}</Table.Cell>

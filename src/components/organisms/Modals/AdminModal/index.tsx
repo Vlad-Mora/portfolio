@@ -37,8 +37,7 @@ const CheckoutModal: React.FC = () => {
             <Modal.Actions>
                 <Button
                     content="Close"
-                    color="violet"
-                    inverted
+                    color="black"
                     onClick={() => setOpen(false)}
                 />
             </Modal.Actions>

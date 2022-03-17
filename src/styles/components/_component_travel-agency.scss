@@ -338,7 +338,7 @@
             }
             .table-body {
                 height: 20rem;
-                overflow-y: scroll;
+                overflow: scroll;
                 .table-row {
                     height: 5rem;
                     td {
@@ -350,11 +350,16 @@
                     .tablerow-content {
                         width: fit-content;
                     }
-                    &.selected {
-                        background: rgba(0,0,0,.05) !important;
-                        color: rgba(0,0,0,.95) !important;
+                    &.selected,
+                    &:hover {
+                        background: $dark_white !important;
+                        color: $black !important;
                     }
                 }
+            }
+            .table-footer {
+                position: fixed;
+                top: calc(100% - 4.7rem);
             }
         }
     }

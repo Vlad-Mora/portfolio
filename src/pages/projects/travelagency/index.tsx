@@ -76,7 +76,9 @@ const TravelAgencyPage = () => {
                     </div>
                     <div className="travelagency-content">
                         {frame.map((item: TripItemProps) => (
-                            <DisplayItemModal item={item}/>
+                            <>
+                                {!item.hidden && <DisplayItemModal item={item}/>}
+                            </>
                         ))}
                     </div>
                 </div>
