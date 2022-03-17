@@ -16,13 +16,13 @@ const ItemSlot: React.FC<ItemSlotProps> = ({ onClick, className, children, image
         <div 
             className={`item-slot label ${className ?? ""}`}
             style={{
-                backgroundImage: `url(${image ?? ""})`,
                 color: `${colour ?? ""}`,
                 "--label": `"${label ?? ""}"`,
                 "--labelColour": `${labelColour ?? ""}`
                 } as CSSProperties}
             onClick={onClick}
         >
+            <img className="item-image" src={image ?? ""}/>
             {children}
         </div>
     );
