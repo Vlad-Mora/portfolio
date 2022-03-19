@@ -8,16 +8,6 @@ What I have done is make 3 main pages that are visible to the user:
 
 These 3 pages will help me demonstrate my skills and my knowledge of a Junior Frontend Developer
 
-<br/>
-
-# Cloning the repository
-1. Clone the repository in your terminal
-2. Type 'yarn install'
-3. Type 'yarn start'
-### After doing 'yarn start', open your browser to 'https://localhost:3000'
-
-<br/>
-
 # File structure
 
 I use this file structure in order to keep my code neat and readable.
