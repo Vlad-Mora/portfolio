@@ -117,7 +117,7 @@ const LoginModal: React.FC = () => {
             basic
             open
             size="fullscreen"
-            className="user-main-modal"
+            className="user-main-modal noselect"
         >
             <Modal.Content>
                 <Segment placeholder>

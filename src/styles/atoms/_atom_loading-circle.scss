@@ -1,0 +1,22 @@
+.loading-circle {
+    background: linear-gradient(to right, red, purple);
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    animation: rotate360 .35s infinite;
+    position: absolute;
+    top: calc(50% - 2.6rem);
+    left: calc(50% - 2.6rem);
+    &::before {
+        content: "";
+        width: 5.2rem;
+        height: 5.2rem;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        top: calc(100% - 5.6rem);
+        left: calc(100% - 5.6rem);
+    }
+}

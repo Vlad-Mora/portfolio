@@ -1,19 +1,76 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
-import LocationsStats from "@molecules/LocationsStats/LocationsStats";
+import LandmarksTable from "@molecules/LandmarksTable/LandmarksTable";
+import LogsTable from "@molecules/LogsTable/LogsTable";
+import UsersTable from "@molecules/UsersTable/UsersTable";
 
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const CheckoutModal: React.FC = () => {
 
-    const { user } = React.useContext(ContextContainer) as ContextProps;
+    const { user, setSelectedLandmark, setSelectedUser } = React.useContext(ContextContainer) as ContextProps;
 
     const [open, setOpen] = React.useState<boolean>(false);
+    const [activeIndex, setActiveIndex] = React.useState<number>(0);
     
+    const tables = [
+        {
+            header: "Locations Statistics",
+            component: <LandmarksTable/>
+        },
+        {
+            header: "Logs",
+            component: <LogsTable/>
+        },
+        {
+            header: "Users",
+            component: <UsersTable/>
+        }
+    ];
+
+    function handleClickEvent(direction: string, action: string) {
+        const lastIndex = tables.length - 1;
+        if (action === "set value") {
+            if (direction === "previous") {
+                if (activeIndex === 0) {
+                    setActiveIndex(lastIndex)
+                } else {
+                    setActiveIndex(activeIndex - 1)
+                }
+            }
+
+            if (direction === "next") {
+                if (activeIndex === lastIndex) {
+                    setActiveIndex(0)
+                } else {
+                    setActiveIndex(activeIndex + 1)
+                }
+            }
+        }
+
+        if (action === "return value") {
+            if (direction === "previous") {
+                if (activeIndex === 0) {
+                    return lastIndex;
+                } else {
+                    return activeIndex - 1;
+                }
+            }
+
+            if (direction === "next") {
+                if (activeIndex === lastIndex) {
+                    return 0;
+                } else {
+                    return activeIndex + 1;
+                }
+            }
+        }
+    }
+
     return (
         <Modal
-            className="admin-modal"
+            className="admin-modal noselect"
             open={open}
             size="large"
             trigger={
@@ -31,14 +88,32 @@ const CheckoutModal: React.FC = () => {
                 <Icon name="user circle"/>
                 [ACP]: {user?.name} {user?.surname.toLocaleUpperCase()}
             </Header>
+            <div className="carousel-button previous">
+                <Button
+                    icon="angle left"
+                    onClick={() => handleClickEvent("previous", "set value")}
+                />
+                {tables[handleClickEvent("previous", "return value")!].header}
+            </div>
+            <div className="carousel-button next">
+                <Button
+                    icon="angle right"
+                    onClick={() => handleClickEvent("next", "set value")}
+                />
+                {tables[handleClickEvent("next", "return value")!].header}
+            </div>
             <Modal.Content scrolling>
-                <LocationsStats/>
+                {tables[activeIndex].component}
             </Modal.Content>
             <Modal.Actions>
                 <Button
                     content="Close"
                     color="black"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                        setSelectedLandmark(undefined)
+                        setSelectedUser(undefined)
+                        setOpen(false)
+                    }}
                 />
             </Modal.Actions>
         </Modal>

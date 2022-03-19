@@ -28,14 +28,16 @@ export interface ContextProps {
   setUserCart: React.Dispatch<
     React.SetStateAction<UserCartProps[] | undefined>
   >;
-  selectedRow: TripItemProps | undefined;
-  setSelectedRow: React.Dispatch<
-    React.SetStateAction<TripItemProps | undefined>
-  >;
   data: Record<string, any> | undefined;
   setData: React.Dispatch<
     React.SetStateAction<Record<string, any> | undefined>
   >;
+  selectedLandmark: TripItemProps | undefined;
+  setSelectedLandmark: React.Dispatch<
+    React.SetStateAction<TripItemProps | undefined>
+  >;
+  selectedUser: UserProps | undefined;
+  setSelectedUser: React.Dispatch<React.SetStateAction<UserProps | undefined>>;
 }
 
 export const ContextContainer = React.createContext<ContextProps | null>(null);
@@ -65,10 +67,13 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   // Travel Agency
   const [user, setUser] = React.useState<UserProps | undefined>();
   const [userCart, setUserCart] = React.useState<UserCartProps[] | undefined>();
-  const [selectedRow, setSelectedRow] = React.useState<
+  const [data, setData] = React.useState<Record<string, any> | undefined>();
+  const [selectedLandmark, setSelectedLandmark] = React.useState<
     TripItemProps | undefined
   >();
-  const [data, setData] = React.useState<Record<string, any> | undefined>();
+  const [selectedUser, setSelectedUser] = React.useState<
+    UserProps | undefined
+  >();
 
   return (
     <ContextContainer.Provider
@@ -94,10 +99,12 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         setUser,
         userCart,
         setUserCart,
-        selectedRow,
-        setSelectedRow,
         data,
         setData,
+        selectedLandmark,
+        setSelectedLandmark,
+        selectedUser,
+        setSelectedUser,
       }}
     >
       {children}

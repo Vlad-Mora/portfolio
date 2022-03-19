@@ -23,3 +23,8 @@ export interface UserCartProps {
   name: string;
   price: number;
 }
+
+export interface LogProps {
+  time: string;
+  message: string;
+}

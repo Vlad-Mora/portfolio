@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Table, Image } from "semantic-ui-react";
+import { Table, Image } from "semantic-ui-react";
 
 import { TripItemProps } from "@interfaces/TravelAgency";
 
@@ -11,9 +11,9 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ data }) => {
 
-    const { selectedRow, setSelectedRow } = React.useContext(ContextContainer) as ContextProps;
+    const { selectedLandmark, setSelectedLandmark } = React.useContext(ContextContainer) as ContextProps;
     
-    const isRowSelected = selectedRow?.landmark === data.landmark ? "selected" : "";
+    const isRowSelected = selectedLandmark?.landmark === data.landmark ? "selected" : "";
     const isOutOfStock = data.stock === 0 ? "out-of-stock" : "";
     const isDisabled = data.hidden ? "hidden" : "";
     
@@ -21,20 +21,16 @@ const TableRow: React.FC<TableRowProps> = ({ data }) => {
         <Table.Row
             className={`table-row ${isRowSelected} ${isOutOfStock} ${isDisabled}`}
             onClick={() => {
-                if (selectedRow?.landmark === data.landmark) {
-                    setSelectedRow(undefined)
+                if (selectedLandmark?.landmark === data.landmark) {
+                    setSelectedLandmark(undefined)
                 } else {
-                    setSelectedRow(data)
+                    setSelectedLandmark(data)
                 }
             }}
         >
-            <Table.Cell>
-                <Header as="h4" image>
-                    <Image src={data.photo} rounded size="mini"/>
-                    <Header.Content className="tablerow-content">
-                        {data.landmark}
-                    </Header.Content>
-                </Header>
+            <Table.Cell className="location-cell">
+                <Image src={data.photo} rounded size="mini"/>
+                {data.landmark}
             </Table.Cell>
             <Table.Cell>{data.discount ? `${data.discount}%` : "None"}</Table.Cell>
             <Table.Cell>{data.rating}</Table.Cell>

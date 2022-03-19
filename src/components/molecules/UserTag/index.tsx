@@ -23,10 +23,6 @@ const UserTag: React.FC = () => {
         }
     }, [frame])
 
-    React.useEffect(() => {
-        console.log(user)
-    }, [user])
-
     return (
         <div className="usertag">
             <Button
