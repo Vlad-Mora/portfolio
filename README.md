@@ -49,9 +49,9 @@ const App: React.FC<AppProps> = () => {
 
     // hooks
 
-    // useEffects
-
     // callbacks
+    
+    // useEffects
 
     // methods
 
