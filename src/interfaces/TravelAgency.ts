@@ -15,7 +15,7 @@ export interface TripItemProps {
   hidden: boolean;
   stock: number;
   viewscount: number;
-  lastPurchased: string;
+  lastpurchased: string;
   discount: number;
 }
 

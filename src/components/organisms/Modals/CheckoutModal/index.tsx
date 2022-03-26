@@ -2,6 +2,7 @@ import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 import { Tooltip } from "react-tippy";
 import { useEasybase } from "easybase-react";
+import { format } from 'date-fns';
 
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
@@ -23,6 +24,13 @@ const CheckoutModal: React.FC = () => {
                 e.eq("password", user?.password!)
             )
         ).set({ balance: newBalance }).one()
+    }
+
+    async function updateLastPurchased(location: string) {
+        const currentDate = format(new Date(), 'kk:mm:ss dd/MM/yyyy');
+        await db("TA-LOCATIONS").where(
+            e.eq("landmark", location)
+        ).set({ lastpurchased: currentDate }).one();
     }
 
     React.useEffect(() => {
@@ -154,6 +162,9 @@ const CheckoutModal: React.FC = () => {
                             setConfirmationModalOpen(false)
                             setOpen(false)
                             if (paymentState === "Payment completed.") {
+                                userCart?.forEach((item) => {
+                                    updateLastPurchased(item.name)
+                                })
                                 setUserCart(undefined)
                             }
                         }}

@@ -1,8 +1,12 @@
 import React from "react";
 
-import { UserProps, UserCartProps } from "@interfaces/TravelAgency";
+import {
+  UserProps,
+  UserCartProps,
+  TripItemProps,
+  LogProps,
+} from "@interfaces/TravelAgency";
 import { ItemProps } from "@interfaces/VendingMachine";
-import { TripItemProps } from "@interfaces/TravelAgency";
 
 export interface ContextProps {
   // Spotify Clone
@@ -28,16 +32,10 @@ export interface ContextProps {
   setUserCart: React.Dispatch<
     React.SetStateAction<UserCartProps[] | undefined>
   >;
-  data: Record<string, any> | undefined;
-  setData: React.Dispatch<
-    React.SetStateAction<Record<string, any> | undefined>
+  selectedRow: TripItemProps | UserProps | LogProps | undefined;
+  setSelectedRow: React.Dispatch<
+    React.SetStateAction<TripItemProps | UserProps | LogProps | undefined>
   >;
-  selectedLandmark: TripItemProps | undefined;
-  setSelectedLandmark: React.Dispatch<
-    React.SetStateAction<TripItemProps | undefined>
-  >;
-  selectedUser: UserProps | undefined;
-  setSelectedUser: React.Dispatch<React.SetStateAction<UserProps | undefined>>;
 }
 
 export const ContextContainer = React.createContext<ContextProps | null>(null);
@@ -67,12 +65,8 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   // Travel Agency
   const [user, setUser] = React.useState<UserProps | undefined>();
   const [userCart, setUserCart] = React.useState<UserCartProps[] | undefined>();
-  const [data, setData] = React.useState<Record<string, any> | undefined>();
-  const [selectedLandmark, setSelectedLandmark] = React.useState<
-    TripItemProps | undefined
-  >();
-  const [selectedUser, setSelectedUser] = React.useState<
-    UserProps | undefined
+  const [selectedRow, setSelectedRow] = React.useState<
+    TripItemProps | UserProps | LogProps | undefined
   >();
 
   return (
@@ -99,12 +93,8 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         setUser,
         userCart,
         setUserCart,
-        data,
-        setData,
-        selectedLandmark,
-        setSelectedLandmark,
-        selectedUser,
-        setSelectedUser,
+        selectedRow,
+        setSelectedRow,
       }}
     >
       {children}

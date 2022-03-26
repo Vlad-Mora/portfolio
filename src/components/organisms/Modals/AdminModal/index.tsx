@@ -1,15 +1,15 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
 
-import LandmarksTable from "@molecules/LandmarksTable/LandmarksTable";
-import LogsTable from "@molecules/LogsTable/LogsTable";
-import UsersTable from "@molecules/UsersTable/UsersTable";
+import LandmarksTable from "@molecules/LandmarksTable";
+import UsersTable from "@molecules/UsersTable";
+import LogsTable from "@molecules/LogsTable";
 
 import { ContextContainer, ContextProps } from "@context/ContextContainer";
 
 const CheckoutModal: React.FC = () => {
 
-    const { user, setSelectedLandmark, setSelectedUser } = React.useContext(ContextContainer) as ContextProps;
+    const { user, setSelectedRow } = React.useContext(ContextContainer) as ContextProps;
 
     const [open, setOpen] = React.useState<boolean>(false);
     const [activeIndex, setActiveIndex] = React.useState<number>(0);
@@ -66,6 +66,8 @@ const CheckoutModal: React.FC = () => {
                 }
             }
         }
+
+        setSelectedRow(undefined);
     }
 
     return (
@@ -102,7 +104,7 @@ const CheckoutModal: React.FC = () => {
                 />
                 {tables[handleClickEvent("next", "return value")!].header}
             </div>
-            <Modal.Content scrolling>
+            <Modal.Content className="carousel" scrolling>
                 {tables[activeIndex].component}
             </Modal.Content>
             <Modal.Actions>
@@ -110,8 +112,7 @@ const CheckoutModal: React.FC = () => {
                     content="Close"
                     color="black"
                     onClick={() => {
-                        setSelectedLandmark(undefined)
-                        setSelectedUser(undefined)
+                        setSelectedRow(undefined)
                         setOpen(false)
                     }}
                 />

@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Modal, Button, Icon } from "semantic-ui-react";
+import { useEasybase } from "easybase-react";
 
 import ItemSlot from "@atoms/ItemSlot";
 
@@ -14,8 +15,17 @@ interface DisplayItemModalProps {
 const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
 
     const { userCart, setUserCart } = React.useContext(ContextContainer) as ContextProps;
+    
     const [open, setOpen] = React.useState<boolean>(false);
     const [purchased, setPurchased] = React.useState<boolean>(false);
+
+    const { db, e } = useEasybase();
+
+    async function incrementViewCount() {
+        await db("TA-LOCATIONS").where(
+            e.eq("landmark", item.landmark)
+        ).set({ viewscount: item.viewscount + 1 }).one();
+    }
 
     React.useEffect(() => {
         if (userCart) {
@@ -31,12 +41,7 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
         }
     }, [userCart])
 
-    var itemPrice = item.discount && (item.price * (1 - (item.discount / 100))).toString();
-    if (itemPrice && itemPrice.toString().split(".").length > 1) {
-        if (itemPrice.toString().split(".")[1].length !== 2) {
-            itemPrice = itemPrice.toString() + "0";
-        }
-    }
+    var itemPrice = item.discount && Math.round(item.price * (1 - (item.discount / 100)));
 
     return (
         <Modal
@@ -50,7 +55,10 @@ const DisplayItemModal: React.FC<DisplayItemModalProps> = ({ item }) => {
                     image={item.photo}
                     label={item.discount ? `${item.discount}% OFF` : ""}
                     labelColour={item.discount ? "#b64240" : ""}
-                    onClick={() => setOpen(true)}
+                    onClick={() => {
+                        setOpen(true)
+                        incrementViewCount()
+                    }}
                 >
                     <div className="item-shade"/>
                     <div className="pop-up">

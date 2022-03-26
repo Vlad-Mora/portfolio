@@ -8,17 +8,11 @@ const VendingMachineDisplay: React.FC = () => {
 
     const { items } = React.useContext(ContextContainer) as ContextProps;
 
-    function displayItems() {
-        const array: React.ReactElement[] = [];
-        items.forEach((item) => {
-            array.push(<DisplayItem itemCode={item.code} price={item.price}/>)
-        })
-        return array;
-    }
-
     return (
         <div className="vending-machine-display">
-            {displayItems()}
+            {items.map((item) => (
+                <DisplayItem itemCode={item.code} price={item.price}/>
+            ))}
         </div>
     );
 };
