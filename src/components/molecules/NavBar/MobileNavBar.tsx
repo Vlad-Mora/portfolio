@@ -38,7 +38,7 @@ const MobileNavBar: React.FC = () => {
                             />
                             <NavItem
                                 title="Contact"
-                                link="/ontact"
+                                link="/contact"
                             />
                         </div>
                         <div className="social-media" style={{ "--social-count": 2} as CSSProperties}>
