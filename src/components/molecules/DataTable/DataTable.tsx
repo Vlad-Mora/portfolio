@@ -37,7 +37,7 @@ const DataTable: React.FC<DataTableProps> = ({ databaseTableHook, tableClassName
 
     const [sortDirection, setSortDirection] = React.useState<"descending" | "ascending">("ascending");
     const [selectedColumn, setSelectedColumn] = React.useState<string>("");
-    const [data, setData] = React.useState<TripItemProps[] | UserProps[] | LogProps[]>();
+    const [data, setData] = React.useState<TripItemProps[] | UserProps[] | LogProps[]>([]);
 
     const { db, useReturn } = useEasybase();
     const { frame }: Record<string, any> = useReturn(() => db(databaseTableHook).return(), []);
@@ -49,7 +49,7 @@ const DataTable: React.FC<DataTableProps> = ({ databaseTableHook, tableClassName
     }, [frame])
 
     React.useEffect(() => {
-        if (data) {
+        if (data.length > 0) {
             if (sortDirection === "descending") {
                 const newData = _.sortBy(data, selectedColumn.replace(/ /g, '').toLowerCase())
                 setData(newData)
@@ -62,7 +62,7 @@ const DataTable: React.FC<DataTableProps> = ({ databaseTableHook, tableClassName
 
     return (
         <>
-            {data ?
+            {data.length > 0 ?
                 <Table className={tableClassName} celled sortable selectable key={tableClassName}>
                     <Table.Header className="table-header">
                         <Table.Row>
@@ -86,7 +86,7 @@ const DataTable: React.FC<DataTableProps> = ({ databaseTableHook, tableClassName
                         </Table.Row>
                     </Table.Header>
                     <Table.Body className="table-body">
-                        {data.map((item: TripItemProps | UserProps | LogProps) => (
+                        {(data as Array<TripItemProps | UserProps | LogProps>).map((item: TripItemProps | UserProps | LogProps) => (
                             <TableRow
                                 data={item}
                                 rowFunction={rowFunction}
