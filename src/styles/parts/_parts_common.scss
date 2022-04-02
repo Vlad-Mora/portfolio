@@ -6,10 +6,6 @@ a {
     text-decoration: none;
 }
 
-body {
-    font-family: cursive;
-}
-
 ::selection {
     background-color: $purple_bright_color;
     color: $white;
@@ -17,6 +13,7 @@ body {
 
 body {
     overflow-y: hidden;
+    font-family: sans-serif;
 }
 
 .app_pagelayout {

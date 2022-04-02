@@ -14,15 +14,17 @@
         width: 100vw;
     }
     .card-wrapper {
+        font-weight: bold;
         height: 30rem;
         width: 72rem;
         overflow: hidden;
         display: grid;
         grid-template-columns: 28rem 1fr;
-        padding: 3rem 1rem;
         position: relative;
         border-radius: 25px;
         background-color: rgba(0, 0, 0, 0.6);
+        min-width: 280px;
+        padding: 3rem 1rem;
         .avatar {
             height: 24rem;
             margin: 0 2rem;
@@ -30,12 +32,14 @@
         .card-description {
             height: 100%;
             display: grid;
-            grid-template-rows: 3rem 1fr 2rem;
+            grid-template-rows: 3rem 1fr 1fr;
             padding: 0 1rem;
+            overflow-y: scroll;
             .name {
                 font-size: 2rem;
                 font-weight: bold;
                 text-decoration: underline;
+                margin: auto 0;
             }
             .description {
                 font-size: 1.5rem;
@@ -44,11 +48,13 @@
             .contact-details {
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between;
-                padding: 0 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 1rem;
                 .contact-item {
                     font-size: 1.2rem;
                     position: relative;
+                    margin-right: 1rem;
                 }
             }
         }
@@ -69,19 +75,18 @@
 @media (max-width: 1024px) {
     .contact-page {
         .card-wrapper {
-            height: 50rem;
-            width: 100vw;
             grid-template-columns: none;
             grid-template-rows: 19rem 1fr;
             padding-top: 2rem;
-            margin: 1rem;
             justify-items: center;
+            height: 80vh;
+            width: 90vw;
             .avatar {
                 height: 15rem;
                 margin: 0;
             }
             &::before {
-                top: 20rem;
+                top: 19rem;
                 left: 5%;
                 width: 90%;
                 height: .2rem;
@@ -94,28 +99,17 @@
     .contact-page {
         .card-wrapper {
             grid-template-rows: 14rem 1fr;
-            font-weight: bold;
             padding-top: 1rem;
             .avatar {
                 height: 10rem;
                 align-self: center;
-                margin: 0;
             }
             .card-description {
                 grid-template-rows: 2rem 1fr 5rem;
-                .name {
-                    font-size: 1.5rem;
-                }
-                .description {
-                    font-size: 1rem;
-                }
                 .contact-details {
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
-                    .contact-item {
-                        margin-right: .3rem;
-                    }
                 }
             }
             &::before {
