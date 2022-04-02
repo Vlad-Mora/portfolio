@@ -10,13 +10,13 @@ interface ProjectSlotProps extends ItemSlotProps {
 const ProjectsPage = () => {
 
   const projects: ProjectSlotProps[] = [
-    {
-      image:
-        "https://www.scdn.co/i/_global/open-graph-default.png",
-      label: "discontinued",
-      labelColour: "#8b0000",
-      link: "/projects/spotify"
-    },
+    // {
+    //   image:
+    //     "https://www.scdn.co/i/_global/open-graph-default.png",
+    //   label: "discontinued",
+    //   labelColour: "#8b0000",
+    //   link: "/projects/spotify"
+    // },
     {
       title: "Vending Machine",
       link: "/projects/vendingmachine",
