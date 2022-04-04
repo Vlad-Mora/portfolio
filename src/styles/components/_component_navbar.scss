@@ -1,120 +1,110 @@
-.mobile-navbar {
-    display: none;
-}
 .navbar {
-    z-index: 3;
-    height: 5rem;
-    background: $grey_color;
+    height: 6rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    padding: .2rem 1rem;
-    color: $white;
-    overflow: hidden;
     .navbar-icon {
-        display: flex;
-        align-items: center;
-        font-family: cursive;
-        font-weight: bold;
-        font-size: 1.5rem;
+        padding: 0 1rem;
+        height: 100%;
         width: fit-content;
-        cursor: pointer;
         position: relative;
-        .header-name {
+        cursor: pointer;
+        .icon {
+            position: relative;
+            height: 80%;
+            margin: 12% 0;
+            border-radius: 0 10px 10px 10px;
+            transition: transform .2s;
+            z-index: 1;
+        }
+        .angle {
             position: absolute;
-            top: calc((-100% + 6rem) / 2);
-            left: 5rem;
-            .split-text {
-                position: relative;
-                top: 1.5rem;
-                left: -30%;
+            height: 80%;
+            top: 10%;
+            left: 35%;
+            transition: left .4s;
+            animation: alertFunctionality 1s 2;
+            &::before {
+                background-color: $blue_bright_color;
+                position: absolute;
+                content: "";
+                height: .5rem;
+                width: 2.5rem;
+                border-radius: 10px;
+                transform: rotate(45deg);
+                top: 30%;
+                transition: transform .3s;
+            }
+            &::after {
+                background-color: $blue_bright_color;
+                position: absolute;
+                content: "";
+                height: .5rem;
+                width: 2.5rem;
+                border-radius: 10px;
+                transform: rotate(-45deg);
+                bottom: 28%;
+                transition: transform .3s;
             }
         }
-        .icon {
-            width: 4.5rem;
-            height: 4.5rem;
+        &:hover {
+            .icon {
+                transform: scale(1.1);
+            }
+            .angle {
+                left: 90%;
+            }
         }
     }
-    .navbar-items {
+    .navbar-content {
+        width: 0%;
+        height: 80%;
+        margin: 0 1rem;
+        transition: width .4s ease-in-out;
+        overflow: hidden;
         display: flex;
-        position: relative;
-        top: calc(100% - 3.2rem); // 3rem - height of each item | .2rem - padding-top of parent
-        left: 10rem;
-        text-align: center;
-        height: 2rem;
-        width: fit-content;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 1rem;
         .navbar-item {
-            line-height: 2rem;
-            background: $purple_bright_color;
-            color: $white;
-            font-weight: bolder;
-            font-size: 1.2rem;
-            width: 8rem;
-            height: 100%;
-            margin-right: .4rem;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            &.active {
-                border: 3px solid $purple_bright_color;
-                border-bottom: none;
-                background: transparent;
-                color: $white;
+            text-decoration: underline;
+            font-size: 1.7rem;
+            color: $purple_bright_color;
+            cursor: pointer;
+            transition: color .5s;
+            animation: colorChanging 3s infinite;
+            &:first-child {
+                margin-left: 1rem;
             }
             &:hover {
-                background: $grey_light_color;
+                color: $grey_color !important;
             }
         }
     }
-    .social-media {
-        display: grid;
-        grid-template-columns: repeat(var(--social-count), 1fr);
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        right: 1rem;
-        .footer-item {
-            margin-right: .5rem;
-            svg {
-                width: 2rem;
-                height: 2rem;
+    &.open {
+        .navbar-icon {
+            .angle {
+                &::before {
+                    transform: rotate(-45deg);
+                }
+                &::after {
+                    transform: rotate(45deg);
+                }
             }
+        }
+        .navbar-content {
+            width: 100%;
         }
     }
 }
 
+.mobile-navbar {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    .navbar {
-        display: none;
-    }
     .mobile-navbar {
-        width: 100%;
-        height: 5rem;
-        background: $grey_color;
         display: flex;
-        padding: .2rem 1rem;
-        color: $white;
-        .navbar-icon {
-            display: flex;
-            font-family: cursive;
-            font-weight: bold;
-            font-size: 1.5rem;
-            width: fit-content;
-            cursor: pointer;
-            position: relative;
-            .header-name {
-                position: absolute;
-                top: calc((-100% + 6rem) / 2);
-                left: 5rem;
-                .split-text {
-                    position: relative;
-                    top: 1.5rem;
-                    left: -30%;
-                }
-            }
-            .icon {
-                width: 4.5rem;
-                height: 4.5rem;
-            }
-        }
     }
     .page-opacity {
         position: fixed;

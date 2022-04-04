@@ -1,6 +1,5 @@
 import React, { CSSProperties } from "react";
 import { Button } from "semantic-ui-react";
-import { useRouter } from "next/router";
 
 import FooterItem from "@atoms/FooterItem";
 import NavItem from "@atoms/NavItem";
@@ -8,15 +7,10 @@ import NavItem from "@atoms/NavItem";
 const MobileNavBar: React.FC = () => {
 
     const [isActive, setIsActive] = React.useState(false);
-    const router = useRouter();
 
     return (
         <>
             <div className="mobile-navbar">
-                <div className="navbar-icon noselect" onClick={() => router.push("/")}>
-                    <img src="assets/images/banner.png"/>
-                    <div className="header-name">Swift<span className="split-text">Crate</span></div>
-                </div>
                 <div className={`page-opacity ${isActive ? "open" : ""}`} onClick={() => setIsActive(!isActive)}/>
                 <div className={`navbar-slide ${isActive ? "open" : ""}`}>
                     <Button

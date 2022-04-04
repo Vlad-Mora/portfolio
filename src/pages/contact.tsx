@@ -7,7 +7,10 @@ const ContactPage = () => {
     <div className="contact-page">
       <img className="background-image" src="http://bit.ly/2gPLxZ4" />
       <div className="card-wrapper">
-        <img className="avatar" src="/assets/images/favicon.png" />
+        <img
+          className="avatar"
+          src="https://github.com/Vlad-Mora/portfolio/blob/main/public/assets/images/logo.png?raw=true"
+        />
         <div className="card-description">
           <div className="name">Vlad MORA</div>
           <div className="description">

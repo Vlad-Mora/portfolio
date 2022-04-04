@@ -13,10 +13,10 @@ a {
 
 body {
     overflow-y: hidden;
-    font-family: sans-serif;
+    font-family: TypoGraphica, sans-serif !important;
 }
 
 .app_pagelayout {
-    height: 90vh;
+    height: 100vh;
     overflow-y: scroll;
 }

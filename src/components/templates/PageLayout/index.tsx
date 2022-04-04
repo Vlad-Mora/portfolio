@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import NavBar from "@molecules/NavBar/NavBar";
+import NavBar from "@molecules/NavBar";
 import Footer from "@molecules/Footer";
 import MobileNavBar from "@molecules/NavBar/MobileNavBar";
 
