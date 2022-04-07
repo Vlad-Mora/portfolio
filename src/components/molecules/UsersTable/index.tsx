@@ -22,7 +22,7 @@ const UsersTable: React.FC = () => {
         }).one();
     }
     async function handleAdminEvent(state: boolean) {
-        await db("USERS").where(
+        await db("TA-USERS").where(
             e.eq("email", mappedSelectedRow?.email!)
         ).set({ isAdmin: state }).one().then((_) => {
             recordLog(`Updated Admin state ${state}. (performed on: ${mappedSelectedRow?.name} ${mappedSelectedRow?.surname})`)
@@ -30,7 +30,7 @@ const UsersTable: React.FC = () => {
         });
     }
     async function handleBalanceEvent(newBalance: number) {
-        await db("USERS").where(
+        await db("TA-USERS").where(
             e.eq("email", mappedSelectedRow?.email)
         ).set({ balance: newBalance }).one().then((_) => {
             recordLog(`Updated balance from ${mappedSelectedRow?.balance} to ${newBalance}. (performed on: ${mappedSelectedRow?.name} ${mappedSelectedRow?.surname})`)

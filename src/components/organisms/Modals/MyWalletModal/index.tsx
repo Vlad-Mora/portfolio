@@ -18,7 +18,7 @@ const MyWalletModal: React.FC = () => {
 
     async function updateUserBalance() {
         setIsLoading(true)
-        await db("USERS").where(
+        await db("TA-USERS").where(
             e.and(
                 e.eq("email", user?.email!),
                 e.eq("password", user?.password!)

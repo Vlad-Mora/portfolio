@@ -18,7 +18,7 @@ const CheckoutModal: React.FC = () => {
     const { db, e } = useEasybase();
     
     async function updateUserBalance(newBalance: number) {
-        await db("USERS").where(
+        await db("TA-USERS").where(
             e.and(
                 e.eq("email", user?.email!),
                 e.eq("password", user?.password!)

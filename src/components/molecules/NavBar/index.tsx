@@ -16,7 +16,7 @@ const NavBar: React.FC = () => {
             <div className="navbar-icon" onClick={() => setIsOpen(!isOpen)}>
                 <img
                     className="icon"
-                    src="assets/images/logo.png"
+                    src="https://github.com/Vlad-Mora/portfolio/blob/main/public/assets/images/logo.png?raw=true"
                 />
                 <div className="angle" />
             </div>

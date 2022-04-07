@@ -28,7 +28,10 @@ function App({ Component, pageProps }: IAppProps) {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
-          <link rel="icon" href="/assets/images/logo.png" />
+          <link
+            rel="icon"
+            href="https://github.com/Vlad-Mora/portfolio/blob/main/public/assets/images/logo.png?raw=true"
+          />
           <link href="/fonts/style.css" rel="stylesheet" />
           <meta
             name="My Portofolio"

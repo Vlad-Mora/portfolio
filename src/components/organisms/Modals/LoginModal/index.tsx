@@ -62,7 +62,7 @@ const LoginModal: React.FC = () => {
             )
         }
 
-        await db("USERS").return().all().then((res: any) => setUsers(res));
+        await db("TA-USERS").return().all().then((res: any) => setUsers(res));
     }
 
 
@@ -94,7 +94,7 @@ const LoginModal: React.FC = () => {
                 e.eq("config", "maxBalance")
             ).return().one();
             
-            await db("USERS").insert({
+            await db("TA-USERS").insert({
                 name: registerName,
                 surname: registerSurname,
                 email: registerEmail,

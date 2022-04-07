@@ -14,7 +14,7 @@ const UserTag: React.FC = () => {
     const [isActive, setIsActive] = React.useState<boolean>(false);
     
     const { db, useReturn, e } = useEasybase();
-    const { frame } = useReturn(() => db("USERS").return().where(e.and(e.eq("name", user?.name!), e.eq("surname", user?.surname!))), [])
+    const { frame } = useReturn(() => db("TA-USERS").return().where(e.and(e.eq("name", user?.name!), e.eq("surname", user?.surname!))), [])
     
     React.useEffect(() => {
         const newUser: any = frame[0]
