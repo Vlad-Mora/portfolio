@@ -1,2 +1,15 @@
 @import './variables';
 @import './includes';
+
+.noselect {
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+::selection {
+    background-color: $purple_bright_color;
+    color: $white;
+}

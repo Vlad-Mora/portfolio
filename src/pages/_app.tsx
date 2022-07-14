@@ -44,9 +44,7 @@ function App({ Component, pageProps }: IAppProps) {
         </Head>
         <ContextProvider>
           <PageLayout>
-            <div className="app_pagelayout">
-              <Component {...pageProps} />
-            </div>
+            <Component {...pageProps} />
           </PageLayout>
         </ContextProvider>
       </EasybaseProvider>
