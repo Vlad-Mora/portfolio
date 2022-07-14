@@ -2,14 +2,18 @@
 @import './includes';
 
 .noselect {
-    user-select: none;
+    user-select: none !important;
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
-::selection {
-    background-color: $purple_bright_color;
-    color: $white;
+// ::selection {
+//     background-color: $purple_bright_color;
+//     color: $white;
+// }
+
+body {
+	margin: 0 !important;
 }
