@@ -16,4 +16,9 @@ a {
 
 body {
 	margin: 0 !important;
+    overflow-y: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
 }

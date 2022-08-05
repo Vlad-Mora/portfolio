@@ -1,0 +1,82 @@
+.header {
+    transition: transform 2s;
+    .primary-content {
+        .inner-header {
+            flex-direction: column;
+            .continue-btn {
+                position: relative;
+                bottom: 3rem;
+                opacity: 0;
+                margin-top: -.4rem;
+                animation: fade-in 2s normal both, heart-pulse 1s infinite;
+                animation-delay: 6.5s;
+            }
+        }
+    }
+    .secondary-content {
+        .project-content {
+            height: 100vh;
+            padding-bottom: 3.5rem;
+            display: grid;
+            grid-template-rows: 10rem auto;
+            .content-header {
+                color: white;
+                font-weight: bold;
+                font-family: IndieFlower, sans-serif;
+                font-size: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .project-slots {
+                background: rgba(255, 255, 255, 0.3);
+                height: 100%;
+                margin: 0 .5rem;
+                padding: .8rem;
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+                justify-content: center;
+                row-gap: .5rem;
+                .project {
+                    width: 20rem;
+                    height: 10rem;
+                    background-color: black;
+                    margin-right: .7rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    background-color: var(--primaryColour);
+                    overflow: hidden;
+                    .project-title {
+                        color: var(--secondaryColour);
+                        border-bottom: 3px solid;
+                        border-color: transparent;
+                        transition: border-color .3s;
+                        &:hover {
+                            border-color: var(--accentColour);
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        .scroll-back {
+            position: absolute;
+            bottom: 1rem;
+        }
+    }
+}
+
+@keyframes fade-in {
+    from {
+        bottom: 3rem;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
