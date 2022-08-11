@@ -1,0 +1,89 @@
+.vendingmachine-page {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--primaryColour);
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+    .machine {
+        width: 40rem;
+        height: 80%;
+        margin: auto 0;
+        padding: 1rem;
+        box-shadow: 0 0 15px var(--accentColour);
+        border-radius: 10px;
+        background: url("https://i.imgur.com/xjoKvQJ.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        .side-panel {
+            width: 11.5rem;
+            float: right;
+            .drink-options {
+                background-color: lightgrey;
+                box-shadow: 3px 3px 4px grey;
+                border-radius: 10px;
+                padding: .5rem 0;
+                margin-top: 1rem;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.4rem;
+                .display-item {
+                    margin: .8rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    box-shadow: 0 2px 4px darkslategray;
+                    padding: .3rem;
+                    border-radius: 5px;
+                    .item-banner {
+                        height: 2.8rem;
+                        width: 7.2rem;
+                    }
+                    .select-button {
+                        background-color: white;
+                        height: 1.5rem;
+                        width: 1.5rem;
+                        border-radius: 70%;
+                        padding: 0;
+                        transition: box-shadow background-color .3s;
+                        &:hover {
+                            box-shadow: 0 2px 4px darkslategray;
+                            background-color: darkgrey;
+                        }
+                    }
+                }
+            }
+            .machine-display {
+                background-color: black;
+                color: lime;
+                display: grid;
+                grid-template-columns: 1fr 1rem 4rem;
+                width: 100%;
+                height: 5rem;
+                border-radius: 5px;
+                .display {
+                    padding: .5rem;
+                    word-wrap: break-word;
+                }
+                .coin-gap {
+                    background-color: black;
+                    box-shadow: 0 0 7px darkgrey;
+                    border-radius: 10px;
+                    width: .5rem;
+                    height: 3rem;
+                    margin: auto 0;
+                }
+                .coin-insert-btn {
+                    padding: 0;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    margin: auto 0;
+                    color: black;
+                    background-color: lightgrey;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

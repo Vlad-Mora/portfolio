@@ -1,7 +1,8 @@
 import React, { CSSProperties } from "react";
 import { useRouter } from "next/router";
 
-import { IProject } from "@organisms/ProjectContent";
+import { IProject } from "@context/index";
+
 
 const ProjectSlot: React.FC<IProject> = ({ name, href, colors }) => {
 

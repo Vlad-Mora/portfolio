@@ -7,7 +7,7 @@ import ebconfig from "../ebconfig.js";
 
 import PageLayout from "@templates/PageLayout";
 
-import { ContextProvider } from "@context/ContextContainer";
+import { ContextProvider } from "@context/index";
 
 import "react-tippy/dist/tippy.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
