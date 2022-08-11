@@ -8,9 +8,7 @@ const IndexPage = () => {
       <div className="header">
         <div id="primary-content" className="primary-content">
           <div className="inner-header flex">
-            <p className="line-1 anim-typewriter">
-              Welcome to my Portfolio. I hope you like it :)
-            </p>
+            <p className="line-1 anim-typewriter">Welcome to my Portfolio.</p>
             <a className="custom-button continue-btn" href="#secondary-content">
               Click to continue
             </a>
