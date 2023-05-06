@@ -87,5 +87,8 @@
       "pre-commit": "yarn prettier-code && yarn type-check && git add -A ."
     }
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines" : { 
+    "node" : ">=14.0.0"
+  }
 }
