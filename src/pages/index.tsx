@@ -3,15 +3,22 @@ import React from "react";
 import ProjectContent from "@organisms/ProjectContent";
 
 const IndexPage = () => {
+  const [height, setHeight] = React.useState<number>(0);
+
   return (
     <div>
-      <div className="header">
+      <div className="header" style={{ transform: `translateY(${height}vh)` }}>
         <div id="primary-content" className="primary-content">
           <div className="inner-header flex">
             <p className="line-1 anim-typewriter">Welcome to my Portfolio.</p>
-            <a className="custom-button continue-btn" href="#secondary-content">
+            <button
+              className="custom-button continue-btn"
+              onClick={() => {
+                setHeight(-100);
+              }}
+            >
               Click to continue
-            </a>
+            </button>
           </div>
 
           <div>
@@ -61,12 +68,14 @@ const IndexPage = () => {
         </div>
         <div id="secondary-content" className="secondary-content">
           <ProjectContent />
-          <a
+          <button
             className="custom-button scroll-back heart-pulse"
-            href="#primary-content"
+            onClick={() => {
+              setHeight(0);
+            }}
           >
             Scroll up
-          </a>
+          </button>
         </div>
       </div>
     </div>

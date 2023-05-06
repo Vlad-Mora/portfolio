@@ -31,8 +31,8 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       },
     },
     {
-      name: "Coming Soon",
-      href: "",
+      name: "Todo List",
+      href: "projects/todolist",
       colors: {
         primaryColour: "#f2bc94",
         secondaryColour: "#30110d",

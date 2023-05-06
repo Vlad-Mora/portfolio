@@ -1,0 +1,147 @@
+.todolist-page {
+    background-color: var(--primaryColour);
+    height: 100vh;
+    width: 100vw;
+    .page-content {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        row-gap: 1rem;
+        .page-header {
+            font-size: 3.5rem;
+            font-family: monospace, Arial, Helvetica, sans-serif;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .task-input {
+            background-color: var(--secondaryColour);
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: fit-content;
+            .submitButton {
+                cursor: pointer;
+                color: var(--accentColour);
+                opacity: 1;
+                transition: opacity .25s ease-in-out;
+                .clipboard {
+                    font-size: 1.6rem;
+                }
+                .corner {
+                    font-size: .7rem;
+                }
+                i {
+                    margin: 0;
+                    width: fit-content;
+                }
+                &.hidden {
+                    opacity: 0;
+                }
+            }
+            .input-bar > input {
+                background: none;
+                color: #ddd;
+                padding: 0 .5rem;
+                font-weight: bold;
+                font-size: 1.3rem;
+                width: 15rem;
+                vertical-align: middle;
+                &:focus, &:active {
+                    border-color: transparent;
+                    color: #ddd;
+                }
+            }
+        }
+        .filter-buttons {
+            button {
+                text-transform: uppercase;
+                background-color: var(--accentColour);
+                color: #ddd;
+                filter: grayscale(100%);
+                transition: filter .25s ease-in-out;
+                &:hover,
+                &.selected {
+                    filter: grayscale(0);
+                }
+            }
+        }
+        .task-list-table {
+            background-color: transparent;
+            border: 4px solid var(--secondaryColour);
+            border-radius: 10px;
+            height: 50rem;
+            width: 45rem;
+            overflow-y: scroll;
+            > * {
+                color: var(--accentColour);
+            }
+            .table {
+                background-color: transparent;
+                border: none;
+                .table-header {
+                    th {
+                        background-color: var(--primaryColour);
+                        border-bottom: 2px solid var(--secondaryColour);
+                        position: sticky;
+                        top: 0;
+                        color: var(--accentColour);
+                        font-size: 1.4rem;
+                        &:nth-child(1) {
+                            width: 2rem;
+                        }
+                        &:nth-child(3) {
+                            width: 2rem;
+                        }
+                        &:nth-child(2) {
+                            text-align: left;
+                        }
+                    }
+                }
+                .table-body {
+                    text-align: center;
+                    .task-content {
+                        word-break: break-word;
+                        height: 3rem;
+                        th {
+                            border-bottom: 1px solid var(--secondaryColour);
+                            &:nth-child(1), &:nth-child(3) {
+                                font-size: 1.3rem;
+                            }
+                            &:nth-child(2) {
+                                text-align: left;
+                                font-size: 1.2rem;
+                                display: flex;
+                                flex-direction: column;
+                                padding-left: .8rem;
+                                .creation-date {
+                                    font-size: .9rem;
+                                    text-align: right;
+                                    text-decoration: underline;
+                                }
+                                &.completed {
+                                    text-decoration: line-through;
+                                }
+                            }
+                            .close {
+                                cursor: pointer;
+                                transition: color .3s;
+
+                                &:hover {
+                                    color: red;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

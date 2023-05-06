@@ -1,0 +1,18 @@
+.step-backward {
+    position: absolute;
+    padding: .7rem !important;
+    background: transparent !important;
+    opacity: 0.5;
+    color: #737373 !important;
+    border: 3px solid #737373 !important;
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.4rem !important;
+    .icon {
+        margin: 0 !important;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
