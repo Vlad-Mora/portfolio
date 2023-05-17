@@ -4,6 +4,7 @@ export interface IProject {
   name: string;
   href: string;
   colors: IProjectColor;
+  disabled?: boolean;
 }
 
 interface IProjectColor {
@@ -29,6 +30,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         secondaryColour: "#2da8d8",
         accentColour: "#d9514e",
       },
+      disabled: true,
     },
     {
       name: "Todo List",

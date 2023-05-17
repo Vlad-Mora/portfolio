@@ -1,0 +1,31 @@
+.disabled-banner {
+    backdrop-filter: blur(1px);
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    cursor: not-allowed;
+
+    &::after {
+        content: "DISABLED";
+        background: var(--primaryColour);
+        color: var(--secondaryColour);
+        position: absolute;
+        left: 30%;
+        top: 20%;
+        width: 100%;
+        transform: rotate(35deg);
+        padding: .4rem 0;
+        box-shadow: 0 0 40px var(--secondaryColour);
+        transition: all .5s;
+    }
+
+    &:hover {
+        &::after {
+            left: 5%;
+            top: 35%;
+            transform: scale(1.2) rotate(0);
+        }
+    }
+}

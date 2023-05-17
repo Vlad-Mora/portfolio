@@ -17,6 +17,7 @@ const ProjectContent: React.FC = () => {
                         name={project.name}
                         href={project.href}
                         colors={project.colors}
+                        disabled={project.disabled}
                     />
                 ))}
             </div>

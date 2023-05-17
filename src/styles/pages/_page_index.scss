@@ -1,5 +1,5 @@
 .header {
-    transition: transform 2s;
+    transition: transform 1s;
     .primary-content {
         height: 100vh;
         .inner-header {
@@ -43,7 +43,6 @@
                 .project {
                     width: 20rem;
                     height: 10rem;
-                    background-color: black;
                     margin-right: .7rem;
                     display: flex;
                     align-items: center;
@@ -52,6 +51,7 @@
                     font-size: 1.5rem;
                     background-color: var(--primaryColour);
                     overflow: hidden;
+                    position: relative;
                     .project-title {
                         color: var(--secondaryColour);
                         border-bottom: 3px solid;
