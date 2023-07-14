@@ -10,7 +10,7 @@ const IndexPage = () => {
       <div className="header" style={{ transform: `translateY(${height}vh)` }}>
         <div id="primary-content" className="primary-content">
           <div className="inner-header flex">
-            <p className="line-1 anim-typewriter">Welcome to my Portfolio.</p>
+            <p className="line-1 anim-typewriter">Welcome to my Portfolio</p>
             <button
               className="custom-button continue-btn"
               onClick={() => {
